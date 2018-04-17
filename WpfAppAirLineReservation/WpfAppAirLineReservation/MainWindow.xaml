@@ -1,0 +1,34 @@
+﻿<Window x:Class="WpfAppAirLineReservation.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfAppAirLineReservation"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <ComboBox  Name="Combobox1" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Margin="359,59,0,0"/>
+        <ComboBox x:Name="Combobox2" HorizontalAlignment="Left" Margin="359,99,0,0" VerticalAlignment="Top" Width="120"/>
+        <Label Background="Transparent" Content="出發地&#xD;&#xA;" Margin="263,59,469,327"/>
+        <Label Content="目的地" Margin="264,97,469,288"/>
+        <DatePicker Name="DepartureDatePicker" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="359,152,0,0"/>
+        <Label Content="出發日" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="268,151,0,0"/>
+        <Label Content="回程日" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="268,195,0,0"/>
+        <DatePicker Name="ArrivalDatePicker" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="359,195,0,0"/>
+        <TextBox SelectedText="" HorizontalAlignment="Left" Height="33" TextWrapping="Wrap" VerticalAlignment="Top" Width="71" Margin="359,243,0,0"/>
+        <Label Content="優惠代碼" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="268,251,0,0"/>
+        <Button Content="搜尋航班" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="268,313,0,0" Click="Button_Click"/>
+        <Label Content="旅客" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="512,193,0,0"/>
+        <ComboBox x:Name="AdultComboBox" HorizontalAlignment="Left" VerticalAlignment="Top" Width="84" Margin="512,255,0,0"/>
+        <ComboBox x:Name="KidComboBox" HorizontalAlignment="Left" VerticalAlignment="Top" Width="84" Margin="628,255,0,0"/>
+        <GroupBox Header="GroupBox" HorizontalAlignment="Left" Height="97" VerticalAlignment="Top" Width="192" Margin="533,46,0,0">
+            <Grid HorizontalAlignment="Left" Height="67" VerticalAlignment="Top" Width="100" Margin="45,4,0,0">
+                <RadioButton x:Name="OneWay" Content="單程" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,19,0,0"/>
+                <RadioButton x:Name="TwoWay" Content="來回" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,37,0,0"/>
+            </Grid>
+        </GroupBox>
+        <Label Content="小孩" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="533,218,0,0"/>
+        <Label Content="大人" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="651,218,0,0"/>
+
+    </Grid>
+</Window>
