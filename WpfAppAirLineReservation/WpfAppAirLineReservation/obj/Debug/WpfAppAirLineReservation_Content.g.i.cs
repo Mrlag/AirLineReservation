@@ -9,6 +9,5 @@
 //------------------------------------------------------------------------------
 
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("airlinereservation.mdf")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("airlinereservation_log.ldf")]
 
 

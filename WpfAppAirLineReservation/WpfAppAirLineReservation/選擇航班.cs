@@ -275,5 +275,14 @@ namespace WpfAppAirLineReservation
             {
             }
         }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            foreach (Button x in flowLayoutPanel2.Controls.OfType<Button>())
+            {
+                
+                if(x.BackColor == Color.Orange)
+            }
+        }
     }
 }
