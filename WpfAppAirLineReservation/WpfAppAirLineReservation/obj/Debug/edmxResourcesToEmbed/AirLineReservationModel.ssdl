@@ -1,0 +1,705 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="AirLineReservationModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="AirLine">
+    <Key>
+      <PropertyRef Name="AirLineID" />
+    </Key>
+    <Property Name="AirLineID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AirLineName" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="City">
+    <Key>
+      <PropertyRef Name="CityID" />
+    </Key>
+    <Property Name="CityID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CityName" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="CountryID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Country">
+    <Key>
+      <PropertyRef Name="CountryID" />
+    </Key>
+    <Property Name="CountryID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CountryName" Type="nvarchar" MaxLength="20" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Coupon">
+    <Key>
+      <PropertyRef Name="CouponID" />
+    </Key>
+    <Property Name="CouponID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CouponCode" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="Stock" Type="int" />
+    <Property Name="AirLineID" Type="int" />
+    <Property Name="UniformNo" Type="int" />
+    <Property Name="Discount" Type="float" />
+  </EntityType>
+  <EntityType Name="Locker">
+    <Key>
+      <PropertyRef Name="LockerID" />
+    </Key>
+    <Property Name="LockerID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="LockerOrderID" Type="int" />
+    <Property Name="LockerPassword" Type="varchar" MaxLength="8" Nullable="false" />
+    <Property Name="LockerStatusID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="LockerStatus">
+    <Key>
+      <PropertyRef Name="LockerStatusID" />
+    </Key>
+    <Property Name="LockerStatusID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="LockerStatus" Type="nvarchar" MaxLength="10" Nullable="false" />
+  </EntityType>
+  <EntityType Name="MemberAccount">
+    <Key>
+      <PropertyRef Name="MemberID" />
+    </Key>
+    <Property Name="MemberID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PassengerID" Type="int" Nullable="false" />
+    <Property Name="MemberEmail" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="MemberPassword" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="MemberPoint" Type="int" />
+  </EntityType>
+  <!--產生期間發現錯誤:
+警告 6002: 資料表/檢視 'G:\C# 作業\講義及作業\專題資料\WPF 專題\WPFAPPAIRLINERESERVATION\WPFAPPAIRLINERESERVATION\AIRLINERESERVATION.MDF.dbo.MemberFeedback' 未定義主索引鍵。已推斷此索引鍵，並將定義建立成唯讀的資料表/檢視。-->
+  <EntityType Name="MemberFeedback">
+    <Key>
+      <PropertyRef Name="MemberID" />
+      <PropertyRef Name="MemberRating" />
+      <PropertyRef Name="Comment" />
+    </Key>
+    <Property Name="MemberID" Type="int" Nullable="false" />
+    <Property Name="MemberRating" Type="int" Nullable="false" />
+    <Property Name="Comment" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="CommentDate" Type="date" />
+  </EntityType>
+  <!--產生期間發現錯誤:
+警告 6002: 資料表/檢視 'G:\C# 作業\講義及作業\專題資料\WPF 專題\WPFAPPAIRLINERESERVATION\WPFAPPAIRLINERESERVATION\AIRLINERESERVATION.MDF.dbo.Newsletter' 未定義主索引鍵。已推斷此索引鍵，並將定義建立成唯讀的資料表/檢視。-->
+  <EntityType Name="Newsletter">
+    <Key>
+      <PropertyRef Name="NewsletterID" />
+      <PropertyRef Name="MailDetail" />
+      <PropertyRef Name="MailDate" />
+    </Key>
+    <Property Name="NewsletterID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MailDetail" Type="varchar(max)" Nullable="false" />
+    <Property Name="MailDate" Type="date" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Order">
+    <Key>
+      <PropertyRef Name="OrderID" />
+    </Key>
+    <Property Name="OrderID" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="AirLineID" Type="int" Nullable="false" />
+    <Property Name="UniformNo" Type="int" />
+    <Property Name="DeparturePlace" Type="int" Nullable="false" />
+    <Property Name="ArrivalPlace" Type="int" Nullable="false" />
+    <Property Name="TravalClassID" Type="int" Nullable="false" />
+    <Property Name="MemberID" Type="int" />
+    <Property Name="DepartureDate" Type="date" Nullable="false" />
+    <Property Name="DepartureTime" Type="time" Precision="7" Nullable="false" />
+    <Property Name="ArrivalDate" Type="date" Nullable="false" />
+    <Property Name="ArrivalTime" Type="time" Precision="7" Nullable="false" />
+    <Property Name="OrderAmount" Type="money" />
+    <Property Name="CouponID" Type="int" />
+    <Property Name="FlightRoute" Type="int" />
+  </EntityType>
+  <!--產生期間發現錯誤:
+警告 6002: 資料表/檢視 'G:\C# 作業\講義及作業\專題資料\WPF 專題\WPFAPPAIRLINERESERVATION\WPFAPPAIRLINERESERVATION\AIRLINERESERVATION.MDF.dbo.OrderDetail' 未定義主索引鍵。已推斷此索引鍵，並將定義建立成唯讀的資料表/檢視。-->
+  <EntityType Name="OrderDetail">
+    <Key>
+      <PropertyRef Name="OrderID" />
+      <PropertyRef Name="PaymentMethodID" />
+      <PropertyRef Name="PassengerID" />
+      <PropertyRef Name="AdultPrice" />
+      <PropertyRef Name="AdultNumber" />
+    </Key>
+    <Property Name="OrderID" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="PaymentMethodID" Type="int" Nullable="false" />
+    <Property Name="PassengerID" Type="int" Nullable="false" />
+    <Property Name="AdultPrice" Type="money" Nullable="false" />
+    <Property Name="AdultNumber" Type="int" Nullable="false" />
+    <Property Name="ChildPrice" Type="money" />
+    <Property Name="ChildNumber" Type="int" />
+    <Property Name="ServiceFee" Type="money" />
+  </EntityType>
+  <EntityType Name="Passenger">
+    <Key>
+      <PropertyRef Name="PassengerID" />
+    </Key>
+    <Property Name="PassengerID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PassportNo" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="FirstName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="LastName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Gender" Type="char" MaxLength="1" Nullable="false" />
+    <Property Name="ContactNumber" Type="varchar" MaxLength="12" Nullable="false" />
+    <Property Name="PassengerEmail" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="BornDate" Type="date" Nullable="false" />
+    <Property Name="PassportExpiredDate" Type="date" />
+    <Property Name="Country" Type="varchar" MaxLength="10" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PaymentMethod">
+    <Key>
+      <PropertyRef Name="PaymentMethodID" />
+    </Key>
+    <Property Name="PaymentMethodID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PaymentMethod" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="TaxFreeProduct">
+    <Key>
+      <PropertyRef Name="ProductID" />
+    </Key>
+    <Property Name="ProductID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AirLineID" Type="int" Nullable="false" />
+    <Property Name="ProductName" Type="varchar(max)" Nullable="false" />
+    <Property Name="ProductPrice" Type="money" Nullable="false" />
+    <Property Name="ProductInStock" Type="int" Nullable="false" />
+    <Property Name="ProductDescription" Type="varchar(max)" />
+    <Property Name="ProductPhoto" Type="varchar(max)" />
+    <Property Name="ProductPoint" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TaxFreeProductOrder">
+    <Key>
+      <PropertyRef Name="TaxFreeProductOrderID" />
+    </Key>
+    <Property Name="TaxFreeProductOrderID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AirLineID" Type="int" Nullable="false" />
+    <Property Name="CouponID" Type="int" Nullable="false" />
+    <Property Name="PaymentMethodID" Type="int" Nullable="false" />
+    <Property Name="OrderAmount" Type="money" Nullable="false" />
+  </EntityType>
+  <!--產生期間發現錯誤:
+警告 6002: 資料表/檢視 'G:\C# 作業\講義及作業\專題資料\WPF 專題\WPFAPPAIRLINERESERVATION\WPFAPPAIRLINERESERVATION\AIRLINERESERVATION.MDF.dbo.TaxFreeProductOrderDetail' 未定義主索引鍵。已推斷此索引鍵，並將定義建立成唯讀的資料表/檢視。-->
+  <EntityType Name="TaxFreeProductOrderDetail">
+    <Key>
+      <PropertyRef Name="TaxFreeProductOrderID" />
+      <PropertyRef Name="ProductID" />
+      <PropertyRef Name="PassengerID" />
+      <PropertyRef Name="Quantity" />
+    </Key>
+    <Property Name="TaxFreeProductOrderID" Type="int" Nullable="false" />
+    <Property Name="ProductID" Type="int" Nullable="false" />
+    <Property Name="PassengerID" Type="int" Nullable="false" />
+    <Property Name="Quantity" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TravelAgency">
+    <Key>
+      <PropertyRef Name="UniformNo" />
+    </Key>
+    <Property Name="UniformNo" Type="int" Nullable="false" />
+    <Property Name="TravelAgencyName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="TravelAgencyEmail" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="TravelAgencyPassword" Type="varchar" MaxLength="20" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TravelClass">
+    <Key>
+      <PropertyRef Name="TravalClassID" />
+    </Key>
+    <Property Name="TravalClassID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TravalClassName" Type="varchar" MaxLength="10" Nullable="false" />
+  </EntityType>
+  <EntityType Name="WifiOrder">
+    <Key>
+      <PropertyRef Name="LockerOrderID" />
+    </Key>
+    <Property Name="LockerOrderID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PassengerID" Type="int" Nullable="false" />
+    <Property Name="UniformID" Type="int" />
+    <Property Name="ContactNumber" Type="varchar" MaxLength="12" Nullable="false" />
+    <Property Name="PaymentMethodID" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_City_Country1">
+    <End Role="Country" Type="Self.Country" Multiplicity="1" />
+    <End Role="City" Type="Self.City" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Country">
+        <PropertyRef Name="CountryID" />
+      </Principal>
+      <Dependent Role="City">
+        <PropertyRef Name="CountryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Coupon_AirLine">
+    <End Role="AirLine" Type="Self.AirLine" Multiplicity="0..1" />
+    <End Role="Coupon" Type="Self.Coupon" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AirLine">
+        <PropertyRef Name="AirLineID" />
+      </Principal>
+      <Dependent Role="Coupon">
+        <PropertyRef Name="AirLineID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Coupon_TravelAgency">
+    <End Role="TravelAgency" Type="Self.TravelAgency" Multiplicity="0..1" />
+    <End Role="Coupon" Type="Self.Coupon" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TravelAgency">
+        <PropertyRef Name="UniformNo" />
+      </Principal>
+      <Dependent Role="Coupon">
+        <PropertyRef Name="UniformNo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Locker_LockerStatus">
+    <End Role="LockerStatus" Type="Self.LockerStatus" Multiplicity="1" />
+    <End Role="Locker" Type="Self.Locker" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LockerStatus">
+        <PropertyRef Name="LockerStatusID" />
+      </Principal>
+      <Dependent Role="Locker">
+        <PropertyRef Name="LockerStatusID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Locker_WifiOrder">
+    <End Role="WifiOrder" Type="Self.WifiOrder" Multiplicity="0..1" />
+    <End Role="Locker" Type="Self.Locker" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="WifiOrder">
+        <PropertyRef Name="LockerOrderID" />
+      </Principal>
+      <Dependent Role="Locker">
+        <PropertyRef Name="LockerOrderID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MemberAccount_Passenger">
+    <End Role="Passenger" Type="Self.Passenger" Multiplicity="1" />
+    <End Role="MemberAccount" Type="Self.MemberAccount" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Passenger">
+        <PropertyRef Name="PassengerID" />
+      </Principal>
+      <Dependent Role="MemberAccount">
+        <PropertyRef Name="PassengerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MemberFeedback_MemberAccount">
+    <End Role="MemberAccount" Type="Self.MemberAccount" Multiplicity="1" />
+    <End Role="MemberFeedback" Type="Self.MemberFeedback" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MemberAccount">
+        <PropertyRef Name="MemberID" />
+      </Principal>
+      <Dependent Role="MemberFeedback">
+        <PropertyRef Name="MemberID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Order_AirLine">
+    <End Role="AirLine" Type="Self.AirLine" Multiplicity="1" />
+    <End Role="Order" Type="Self.Order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AirLine">
+        <PropertyRef Name="AirLineID" />
+      </Principal>
+      <Dependent Role="Order">
+        <PropertyRef Name="AirLineID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Order_City">
+    <End Role="City" Type="Self.City" Multiplicity="1" />
+    <End Role="Order" Type="Self.Order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="City">
+        <PropertyRef Name="CityID" />
+      </Principal>
+      <Dependent Role="Order">
+        <PropertyRef Name="DeparturePlace" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Order_City1">
+    <End Role="City" Type="Self.City" Multiplicity="1" />
+    <End Role="Order" Type="Self.Order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="City">
+        <PropertyRef Name="CityID" />
+      </Principal>
+      <Dependent Role="Order">
+        <PropertyRef Name="ArrivalPlace" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Order_Coupon">
+    <End Role="Coupon" Type="Self.Coupon" Multiplicity="0..1" />
+    <End Role="Order" Type="Self.Order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Coupon">
+        <PropertyRef Name="CouponID" />
+      </Principal>
+      <Dependent Role="Order">
+        <PropertyRef Name="CouponID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Order_MemberAccount">
+    <End Role="MemberAccount" Type="Self.MemberAccount" Multiplicity="0..1" />
+    <End Role="Order" Type="Self.Order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MemberAccount">
+        <PropertyRef Name="MemberID" />
+      </Principal>
+      <Dependent Role="Order">
+        <PropertyRef Name="MemberID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Order_TravelAgency">
+    <End Role="TravelAgency" Type="Self.TravelAgency" Multiplicity="0..1" />
+    <End Role="Order" Type="Self.Order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TravelAgency">
+        <PropertyRef Name="UniformNo" />
+      </Principal>
+      <Dependent Role="Order">
+        <PropertyRef Name="UniformNo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Order_TravelClass">
+    <End Role="TravelClass" Type="Self.TravelClass" Multiplicity="1" />
+    <End Role="Order" Type="Self.Order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TravelClass">
+        <PropertyRef Name="TravalClassID" />
+      </Principal>
+      <Dependent Role="Order">
+        <PropertyRef Name="TravalClassID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OrderDetail_Order">
+    <End Role="Order" Type="Self.Order" Multiplicity="1" />
+    <End Role="OrderDetail" Type="Self.OrderDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Order">
+        <PropertyRef Name="OrderID" />
+      </Principal>
+      <Dependent Role="OrderDetail">
+        <PropertyRef Name="OrderID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OrderDetail_Passenger">
+    <End Role="Passenger" Type="Self.Passenger" Multiplicity="1" />
+    <End Role="OrderDetail" Type="Self.OrderDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Passenger">
+        <PropertyRef Name="PassengerID" />
+      </Principal>
+      <Dependent Role="OrderDetail">
+        <PropertyRef Name="PassengerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OrderDetail_PaymentMethod">
+    <End Role="PaymentMethod" Type="Self.PaymentMethod" Multiplicity="1" />
+    <End Role="OrderDetail" Type="Self.OrderDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PaymentMethod">
+        <PropertyRef Name="PaymentMethodID" />
+      </Principal>
+      <Dependent Role="OrderDetail">
+        <PropertyRef Name="PaymentMethodID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TaxFreeProduct_AirLine">
+    <End Role="AirLine" Type="Self.AirLine" Multiplicity="1" />
+    <End Role="TaxFreeProduct" Type="Self.TaxFreeProduct" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AirLine">
+        <PropertyRef Name="AirLineID" />
+      </Principal>
+      <Dependent Role="TaxFreeProduct">
+        <PropertyRef Name="AirLineID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TaxFreeProductOrder_AirLine">
+    <End Role="AirLine" Type="Self.AirLine" Multiplicity="1" />
+    <End Role="TaxFreeProductOrder" Type="Self.TaxFreeProductOrder" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AirLine">
+        <PropertyRef Name="AirLineID" />
+      </Principal>
+      <Dependent Role="TaxFreeProductOrder">
+        <PropertyRef Name="AirLineID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TaxFreeProductOrder_Coupon">
+    <End Role="Coupon" Type="Self.Coupon" Multiplicity="1" />
+    <End Role="TaxFreeProductOrder" Type="Self.TaxFreeProductOrder" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Coupon">
+        <PropertyRef Name="CouponID" />
+      </Principal>
+      <Dependent Role="TaxFreeProductOrder">
+        <PropertyRef Name="CouponID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TaxFreeProductOrder_PaymentMethod">
+    <End Role="PaymentMethod" Type="Self.PaymentMethod" Multiplicity="1" />
+    <End Role="TaxFreeProductOrder" Type="Self.TaxFreeProductOrder" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PaymentMethod">
+        <PropertyRef Name="PaymentMethodID" />
+      </Principal>
+      <Dependent Role="TaxFreeProductOrder">
+        <PropertyRef Name="PaymentMethodID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TaxFreeProductOrderDetail_Passenger">
+    <End Role="Passenger" Type="Self.Passenger" Multiplicity="1" />
+    <End Role="TaxFreeProductOrderDetail" Type="Self.TaxFreeProductOrderDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Passenger">
+        <PropertyRef Name="PassengerID" />
+      </Principal>
+      <Dependent Role="TaxFreeProductOrderDetail">
+        <PropertyRef Name="PassengerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TaxFreeProductOrderDetail_TaxFreeProduct">
+    <End Role="TaxFreeProduct" Type="Self.TaxFreeProduct" Multiplicity="1" />
+    <End Role="TaxFreeProductOrderDetail" Type="Self.TaxFreeProductOrderDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TaxFreeProduct">
+        <PropertyRef Name="ProductID" />
+      </Principal>
+      <Dependent Role="TaxFreeProductOrderDetail">
+        <PropertyRef Name="ProductID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TaxFreeProductOrderDetail_TaxFreeProductOrder">
+    <End Role="TaxFreeProductOrder" Type="Self.TaxFreeProductOrder" Multiplicity="1" />
+    <End Role="TaxFreeProductOrderDetail" Type="Self.TaxFreeProductOrderDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TaxFreeProductOrder">
+        <PropertyRef Name="TaxFreeProductOrderID" />
+      </Principal>
+      <Dependent Role="TaxFreeProductOrderDetail">
+        <PropertyRef Name="TaxFreeProductOrderID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_WifiOrder_Passenger">
+    <End Role="Passenger" Type="Self.Passenger" Multiplicity="1" />
+    <End Role="WifiOrder" Type="Self.WifiOrder" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Passenger">
+        <PropertyRef Name="PassengerID" />
+      </Principal>
+      <Dependent Role="WifiOrder">
+        <PropertyRef Name="PassengerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_WifiOrder_PaymentMethod">
+    <End Role="PaymentMethod" Type="Self.PaymentMethod" Multiplicity="1" />
+    <End Role="WifiOrder" Type="Self.WifiOrder" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PaymentMethod">
+        <PropertyRef Name="PaymentMethodID" />
+      </Principal>
+      <Dependent Role="WifiOrder">
+        <PropertyRef Name="PaymentMethodID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_WifiOrder_TravelAgency">
+    <End Role="TravelAgency" Type="Self.TravelAgency" Multiplicity="0..1" />
+    <End Role="WifiOrder" Type="Self.WifiOrder" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TravelAgency">
+        <PropertyRef Name="UniformNo" />
+      </Principal>
+      <Dependent Role="WifiOrder">
+        <PropertyRef Name="UniformID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="AirLineReservationModelStoreContainer">
+    <EntitySet Name="AirLine" EntityType="Self.AirLine" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="City" EntityType="Self.City" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Country" EntityType="Self.Country" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Coupon" EntityType="Self.Coupon" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Locker" EntityType="Self.Locker" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LockerStatus" EntityType="Self.LockerStatus" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MemberAccount" EntityType="Self.MemberAccount" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Order" EntityType="Self.Order" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Passenger" EntityType="Self.Passenger" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PaymentMethod" EntityType="Self.PaymentMethod" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TaxFreeProduct" EntityType="Self.TaxFreeProduct" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TaxFreeProductOrder" EntityType="Self.TaxFreeProductOrder" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TravelAgency" EntityType="Self.TravelAgency" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TravelClass" EntityType="Self.TravelClass" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="WifiOrder" EntityType="Self.WifiOrder" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MemberFeedback" EntityType="Self.MemberFeedback" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [MemberFeedback].[MemberID] AS [MemberID], 
+    [MemberFeedback].[MemberRating] AS [MemberRating], 
+    [MemberFeedback].[Comment] AS [Comment], 
+    [MemberFeedback].[CommentDate] AS [CommentDate]
+    FROM [dbo].[MemberFeedback] AS [MemberFeedback]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="Newsletter" EntityType="Self.Newsletter" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Newsletter].[NewsletterID] AS [NewsletterID], 
+    [Newsletter].[MailDetail] AS [MailDetail], 
+    [Newsletter].[MailDate] AS [MailDate]
+    FROM [dbo].[Newsletter] AS [Newsletter]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="OrderDetail" EntityType="Self.OrderDetail" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [OrderDetail].[OrderID] AS [OrderID], 
+    [OrderDetail].[PaymentMethodID] AS [PaymentMethodID], 
+    [OrderDetail].[PassengerID] AS [PassengerID], 
+    [OrderDetail].[AdultPrice] AS [AdultPrice], 
+    [OrderDetail].[AdultNumber] AS [AdultNumber], 
+    [OrderDetail].[ChildPrice] AS [ChildPrice], 
+    [OrderDetail].[ChildNumber] AS [ChildNumber], 
+    [OrderDetail].[ServiceFee] AS [ServiceFee]
+    FROM [dbo].[OrderDetail] AS [OrderDetail]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="TaxFreeProductOrderDetail" EntityType="Self.TaxFreeProductOrderDetail" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [TaxFreeProductOrderDetail].[TaxFreeProductOrderID] AS [TaxFreeProductOrderID], 
+    [TaxFreeProductOrderDetail].[ProductID] AS [ProductID], 
+    [TaxFreeProductOrderDetail].[PassengerID] AS [PassengerID], 
+    [TaxFreeProductOrderDetail].[Quantity] AS [Quantity]
+    FROM [dbo].[TaxFreeProductOrderDetail] AS [TaxFreeProductOrderDetail]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK_City_Country1" Association="Self.FK_City_Country1">
+      <End Role="Country" EntitySet="Country" />
+      <End Role="City" EntitySet="City" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Coupon_AirLine" Association="Self.FK_Coupon_AirLine">
+      <End Role="AirLine" EntitySet="AirLine" />
+      <End Role="Coupon" EntitySet="Coupon" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Coupon_TravelAgency" Association="Self.FK_Coupon_TravelAgency">
+      <End Role="TravelAgency" EntitySet="TravelAgency" />
+      <End Role="Coupon" EntitySet="Coupon" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Locker_LockerStatus" Association="Self.FK_Locker_LockerStatus">
+      <End Role="LockerStatus" EntitySet="LockerStatus" />
+      <End Role="Locker" EntitySet="Locker" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Locker_WifiOrder" Association="Self.FK_Locker_WifiOrder">
+      <End Role="WifiOrder" EntitySet="WifiOrder" />
+      <End Role="Locker" EntitySet="Locker" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MemberAccount_Passenger" Association="Self.FK_MemberAccount_Passenger">
+      <End Role="Passenger" EntitySet="Passenger" />
+      <End Role="MemberAccount" EntitySet="MemberAccount" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MemberFeedback_MemberAccount" Association="Self.FK_MemberFeedback_MemberAccount">
+      <End Role="MemberAccount" EntitySet="MemberAccount" />
+      <End Role="MemberFeedback" EntitySet="MemberFeedback" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Order_AirLine" Association="Self.FK_Order_AirLine">
+      <End Role="AirLine" EntitySet="AirLine" />
+      <End Role="Order" EntitySet="Order" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Order_City" Association="Self.FK_Order_City">
+      <End Role="City" EntitySet="City" />
+      <End Role="Order" EntitySet="Order" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Order_City1" Association="Self.FK_Order_City1">
+      <End Role="City" EntitySet="City" />
+      <End Role="Order" EntitySet="Order" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Order_Coupon" Association="Self.FK_Order_Coupon">
+      <End Role="Coupon" EntitySet="Coupon" />
+      <End Role="Order" EntitySet="Order" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Order_MemberAccount" Association="Self.FK_Order_MemberAccount">
+      <End Role="MemberAccount" EntitySet="MemberAccount" />
+      <End Role="Order" EntitySet="Order" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Order_TravelAgency" Association="Self.FK_Order_TravelAgency">
+      <End Role="TravelAgency" EntitySet="TravelAgency" />
+      <End Role="Order" EntitySet="Order" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Order_TravelClass" Association="Self.FK_Order_TravelClass">
+      <End Role="TravelClass" EntitySet="TravelClass" />
+      <End Role="Order" EntitySet="Order" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OrderDetail_Order" Association="Self.FK_OrderDetail_Order">
+      <End Role="Order" EntitySet="Order" />
+      <End Role="OrderDetail" EntitySet="OrderDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OrderDetail_Passenger" Association="Self.FK_OrderDetail_Passenger">
+      <End Role="Passenger" EntitySet="Passenger" />
+      <End Role="OrderDetail" EntitySet="OrderDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OrderDetail_PaymentMethod" Association="Self.FK_OrderDetail_PaymentMethod">
+      <End Role="PaymentMethod" EntitySet="PaymentMethod" />
+      <End Role="OrderDetail" EntitySet="OrderDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TaxFreeProduct_AirLine" Association="Self.FK_TaxFreeProduct_AirLine">
+      <End Role="AirLine" EntitySet="AirLine" />
+      <End Role="TaxFreeProduct" EntitySet="TaxFreeProduct" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TaxFreeProductOrder_AirLine" Association="Self.FK_TaxFreeProductOrder_AirLine">
+      <End Role="AirLine" EntitySet="AirLine" />
+      <End Role="TaxFreeProductOrder" EntitySet="TaxFreeProductOrder" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TaxFreeProductOrder_Coupon" Association="Self.FK_TaxFreeProductOrder_Coupon">
+      <End Role="Coupon" EntitySet="Coupon" />
+      <End Role="TaxFreeProductOrder" EntitySet="TaxFreeProductOrder" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TaxFreeProductOrder_PaymentMethod" Association="Self.FK_TaxFreeProductOrder_PaymentMethod">
+      <End Role="PaymentMethod" EntitySet="PaymentMethod" />
+      <End Role="TaxFreeProductOrder" EntitySet="TaxFreeProductOrder" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TaxFreeProductOrderDetail_Passenger" Association="Self.FK_TaxFreeProductOrderDetail_Passenger">
+      <End Role="Passenger" EntitySet="Passenger" />
+      <End Role="TaxFreeProductOrderDetail" EntitySet="TaxFreeProductOrderDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TaxFreeProductOrderDetail_TaxFreeProduct" Association="Self.FK_TaxFreeProductOrderDetail_TaxFreeProduct">
+      <End Role="TaxFreeProduct" EntitySet="TaxFreeProduct" />
+      <End Role="TaxFreeProductOrderDetail" EntitySet="TaxFreeProductOrderDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TaxFreeProductOrderDetail_TaxFreeProductOrder" Association="Self.FK_TaxFreeProductOrderDetail_TaxFreeProductOrder">
+      <End Role="TaxFreeProductOrder" EntitySet="TaxFreeProductOrder" />
+      <End Role="TaxFreeProductOrderDetail" EntitySet="TaxFreeProductOrderDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK_WifiOrder_Passenger" Association="Self.FK_WifiOrder_Passenger">
+      <End Role="Passenger" EntitySet="Passenger" />
+      <End Role="WifiOrder" EntitySet="WifiOrder" />
+    </AssociationSet>
+    <AssociationSet Name="FK_WifiOrder_PaymentMethod" Association="Self.FK_WifiOrder_PaymentMethod">
+      <End Role="PaymentMethod" EntitySet="PaymentMethod" />
+      <End Role="WifiOrder" EntitySet="WifiOrder" />
+    </AssociationSet>
+    <AssociationSet Name="FK_WifiOrder_TravelAgency" Association="Self.FK_WifiOrder_TravelAgency">
+      <End Role="TravelAgency" EntitySet="TravelAgency" />
+      <End Role="WifiOrder" EntitySet="WifiOrder" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

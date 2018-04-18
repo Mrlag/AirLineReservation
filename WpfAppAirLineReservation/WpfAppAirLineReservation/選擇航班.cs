@@ -281,7 +281,7 @@ namespace WpfAppAirLineReservation
             foreach (Button x in flowLayoutPanel2.Controls.OfType<Button>())
             {
                 
-                if(x.BackColor == Color.Orange)
+                //if(x.BackColor == Color.Orange)
             }
         }
     }

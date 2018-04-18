@@ -20,15 +20,18 @@ namespace WpfAppAirLineReservation
             //AirLineReservation W = new AirLineReservation();
             //W.Show();
 
-            MainWindow W = new MainWindow();
-            W.ShowDialog();
-            if (W.DialogResult == true)
-            {
-                W.Close();
-                選擇航班 form = new 選擇航班();
-                form.ShowDialog();
-            }
-            
+            //MainWindow W = new MainWindow();
+            //W.ShowDialog();
+            //if (W.DialogResult == true)
+            //{
+            //    W.Close();
+            //    選擇航班 form = new 選擇航班();
+            //    form.ShowDialog();
+            //}
+
+            MemberRegister f = new MemberRegister();
+            f.Show();
+
         }
     }
 }

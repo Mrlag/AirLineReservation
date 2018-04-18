@@ -15,6 +15,7 @@ namespace WpfAppAirLineReservation
         public MemberLogin()
         {
             InitializeComponent();
+            textBox2.MaxLength = 8;
         }
     }
 }
