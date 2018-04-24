@@ -7,12 +7,17 @@
         mc:Ignorable="d"
         Title="PassengerInformation" Height="450" Width="900">
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="784*"/>
+            <ColumnDefinition Width="109*"/>
+        </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="72*"/>
             <RowDefinition Height="347*"/>
         </Grid.RowDefinitions>
-        <ListBox Grid.Row="1" Name="PassengerLists"></ListBox>
+        <ListBox Grid.Row="1" Name="PassengerLists" Margin="0,0,10,0"/>
         <Button Content="Button" HorizontalAlignment="Left" Margin="144,25,0,0" VerticalAlignment="Top" Width="74" Click="Button_Click"/>
+        <Button Content="下一步" Grid.Column="1" HorizontalAlignment="Left" Margin="18,186,0,0" Grid.Row="1" VerticalAlignment="Top" Width="75" Height="48" Click="Button_Click_1"/>
 
     </Grid>
 </Window>

@@ -11,21 +11,27 @@
             <RowDefinition Height="32*"/>
             <RowDefinition Height="193*"/>
         </Grid.RowDefinitions>
-        <WrapPanel Grid.Row="1">
-            <Label  Width="65" Content="護照號碼:" Margin="10,20,10,20"></Label>
-            <TextBox Name="PassportNumber" Height="23" TextWrapping="Wrap" Text="TextBox" Width="120"/>
-            <Label  Width="65" Content="姓:" Margin="10,20,10,20"/>
-            <TextBox x:Name="LastName" Height="23" TextWrapping="Wrap" Text="TextBox" Width="120" />
-            <Label Width="65"  Content="名:" Margin="10,20,10,20"/>
-            <TextBox x:Name="FirstName" Height="23" TextWrapping="Wrap" Text="TextBox" Width="120" />
-            <Label Width="65" Content="性別:" Margin="10,20,10,20"/>
-            <ComboBox Name="GenderCombo" Width="120" Margin="10,20,10,20"/>
-            <Label Width="65" Content="連絡電話:" Margin="10,20,10,20"/>
-            <TextBox x:Name="ContactNumber" Height="23" TextWrapping="Wrap" Text="TextBox" Width="120" />
-            <Label Width="65"  Content="電子信箱:" Margin="10,20,10,20"/>
-            <TextBox x:Name="Email" Height="23" TextWrapping="Wrap" Text="TextBox" Width="110" />
-        </WrapPanel>
-        <Label Name="PassengerNumber" Content="顧客1...." HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" Width="85" Margin="0,-1,0,0"/>
+        <Grid Grid.Row="1">
+            <Label  Width="65" Content="護照號碼:" Margin="9,22,576,123"></Label>
+            <TextBox Name="PassportNumber" Height="23" TextWrapping="Wrap" Text="TextBox" Width="120" Margin="76,24,454,125"/>
+            <Label Content="姓:" Margin="220,22,397,126"/>
+            <TextBox x:Name="LastName" Height="23" TextWrapping="Wrap" Text="TextBox" Width="120" Margin="272,22,258,127" />
+            <Label  Content="名:" Margin="431,22,193,128" RenderTransformOrigin="0.538,0.409"/>
+            <TextBox x:Name="FirstName" Height="23" TextWrapping="Wrap" Text="TextBox" Width="120" Margin="501,22,29,127" />
+            <Label Content="性別:" Margin="10,64,586,84"/>
+            <ComboBox Name="GenderCombo"  Margin="76,66,457,82"/>
+            <Label Width="65" Content="連絡電話:" Margin="201,65,384,77"/>
+            <TextBox x:Name="ContactNumber" Height="23" TextWrapping="Wrap" Text="TextBox" Width="120" Margin="272,67,258,82" />
+            <Label  Content="電子信箱:" Margin="428,68,162,80"/>
+            <TextBox x:Name="PassengerEmail" Height="23" TextWrapping="Wrap" Text="TextBox" Margin="503,69,31,80" />
+            <Label Content="出生年月日:" Margin="196,110,381,38"/>
+            <DatePicker Name="BornDate" HorizontalAlignment="Left" Margin="274,111,0,0" VerticalAlignment="Top" Width="118"/>
+            <Label Content="護照到期日:" Margin="419,110,156,38"/>
+            <DatePicker x:Name="BornDate_Copy" HorizontalAlignment="Left" Margin="504,109,0,0" VerticalAlignment="Top" Width="115"/>
+            <Label Content="國家:" Margin="10,108,576,37"/>
+            <ComboBox x:Name="CountryCombo"  Margin="76,108,457,40"/>
+        </Grid>
+        <Label Name="PassengerNumberLabel" Content="顧客1...."/>
 
     </Grid>
 </UserControl>

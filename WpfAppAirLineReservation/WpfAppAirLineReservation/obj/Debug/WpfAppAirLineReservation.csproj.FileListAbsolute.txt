@@ -21,11 +21,9 @@ C:\Users\iamdd\Desktop\WpfAppAirLineReservation\WpfAppAirLineReservation\obj\Deb
 D:\講義及作業\專題資料\WPF 專題\WpfAppAirLineReservation\WpfAppAirLineReservation\bin\Debug\WpfAppAirLineReservation.exe.config
 D:\講義及作業\專題資料\WPF 專題\WpfAppAirLineReservation\WpfAppAirLineReservation\bin\Debug\WpfAppAirLineReservation.exe
 D:\講義及作業\專題資料\WPF 專題\WpfAppAirLineReservation\WpfAppAirLineReservation\bin\Debug\WpfAppAirLineReservation.pdb
-D:\講義及作業\專題資料\WPF 專題\WpfAppAirLineReservation\WpfAppAirLineReservation\obj\Debug\MainWindow.g.cs
 D:\講義及作業\專題資料\WPF 專題\WpfAppAirLineReservation\WpfAppAirLineReservation\obj\Debug\App.g.cs
 D:\講義及作業\專題資料\WPF 專題\WpfAppAirLineReservation\WpfAppAirLineReservation\obj\Debug\WpfAppAirLineReservation_MarkupCompile.cache
 D:\講義及作業\專題資料\WPF 專題\WpfAppAirLineReservation\WpfAppAirLineReservation\obj\Debug\WpfAppAirLineReservation_MarkupCompile.lref
-D:\講義及作業\專題資料\WPF 專題\WpfAppAirLineReservation\WpfAppAirLineReservation\obj\Debug\MainWindow.baml
 D:\講義及作業\專題資料\WPF 專題\WpfAppAirLineReservation\WpfAppAirLineReservation\obj\Debug\WpfAppAirLineReservation.g.resources
 D:\講義及作業\專題資料\WPF 專題\WpfAppAirLineReservation\WpfAppAirLineReservation\obj\Debug\WpfAppAirLineReservation.TicketDetail.resources
 D:\講義及作業\專題資料\WPF 專題\WpfAppAirLineReservation\WpfAppAirLineReservation\obj\Debug\WpfAppAirLineReservation.選擇航班.resources
@@ -105,8 +103,6 @@ D:\講義及作業\專題資料\WPF 專題\WpfAppAirLineReservation\WpfAppAirLin
 D:\講義及作業\專題資料\WPF 專題\WpfAppAirLineReservation\WpfAppAirLineReservation\bin\Debug\EntityFramework.SqlServer.xml
 D:\講義及作業\專題資料\WPF 專題\WpfAppAirLineReservation\WpfAppAirLineReservation\bin\Debug\zh-Hant\EntityFramework.resources.dll
 D:\講義及作業\專題資料\WPF 專題\WpfAppAirLineReservation\WpfAppAirLineReservation\obj\Debug\WpfAppAirLineReservation.csproj.CopyComplete
-D:\講義及作業\專題資料\WPF 專題\WpfAppAirLineReservation\WpfAppAirLineReservation\obj\Debug\選擇航班 WPF.g.cs
-D:\講義及作業\專題資料\WPF 專題\WpfAppAirLineReservation\WpfAppAirLineReservation\obj\Debug\選擇航班 WPF.baml
 G:\C# 作業\講義及作業\專題資料\WPF 專題\WpfAppAirLineReservation\WpfAppAirLineReservation\bin\Debug\EntityFramework.dll
 G:\C# 作業\講義及作業\專題資料\WPF 專題\WpfAppAirLineReservation\WpfAppAirLineReservation\bin\Debug\EntityFramework.SqlServer.dll
 G:\C# 作業\講義及作業\專題資料\WPF 專題\WpfAppAirLineReservation\WpfAppAirLineReservation\bin\Debug\EntityFramework.xml
@@ -168,4 +164,7 @@ D:\講義及作業\專題資料\WPF 專題\WpfAppAirLineReservation\WpfAppAirLin
 D:\講義及作業\專題資料\WPF 專題\WpfAppAirLineReservation\WpfAppAirLineReservation\obj\Debug\PassengerInformation.g.cs
 D:\講義及作業\專題資料\WPF 專題\WpfAppAirLineReservation\WpfAppAirLineReservation\obj\Debug\MyUserControl\PassengerInformationPanel.baml
 D:\講義及作業\專題資料\WPF 專題\WpfAppAirLineReservation\WpfAppAirLineReservation\obj\Debug\PassengerInformation.baml
-D:\講義及作業\專題資料\WPF 專題\WpfAppAirLineReservation\WpfAppAirLineReservation\obj\Debug\WpfAppAirLineReservation.csprojResolveAssemblyReference.cache
+D:\講義及作業\專題資料\WPF 專題\WpfAppAirLineReservation\WpfAppAirLineReservation\obj\Debug\AirReservationTicketOrder\MainWindow.g.cs
+D:\講義及作業\專題資料\WPF 專題\WpfAppAirLineReservation\WpfAppAirLineReservation\obj\Debug\AirReservationTicketOrder\MainWindow.baml
+D:\講義及作業\專題資料\WPF 專題\WpfAppAirLineReservation\WpfAppAirLineReservation\obj\Debug\AirReservationTicketOrder\選擇航班 WPF.g.cs
+D:\講義及作業\專題資料\WPF 專題\WpfAppAirLineReservation\WpfAppAirLineReservation\obj\Debug\AirReservationTicketOrder\選擇航班 WPF.baml

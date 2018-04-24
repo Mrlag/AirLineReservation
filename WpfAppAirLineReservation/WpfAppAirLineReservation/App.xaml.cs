@@ -18,11 +18,11 @@ namespace WpfAppAirLineReservation
             this.ShutdownMode = ShutdownMode.OnLastWindowClose;
 
 
-            //MainWindow W = new MainWindow();
-            //W.Show();
+            MainWindow W = new MainWindow();
+            W.Show();
 
-            PassengerInformation w = new PassengerInformation();
-            w.Show();
+            //Window w = new PassengerInformation();
+            //w.Show();
 
 
         }
