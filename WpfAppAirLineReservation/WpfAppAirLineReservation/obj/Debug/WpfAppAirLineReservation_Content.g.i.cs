@@ -9,8 +9,6 @@
 //------------------------------------------------------------------------------
 
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("airlinereservation.mdf")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("airlinereservationmodel.context.tt")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("airlinereservationmodel.tt")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("airlinereservation_log.ldf")]
 
 

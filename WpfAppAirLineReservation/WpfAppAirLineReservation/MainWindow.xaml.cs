@@ -68,7 +68,7 @@ namespace WpfAppAirLineReservation
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-
+            //TODO檢查格子輸入
 
             DeparturePlace = (string)Combobox1.SelectedItem;
             ArrivalPlace = (string)Combobox2.SelectedItem;
@@ -77,7 +77,11 @@ namespace WpfAppAirLineReservation
             AdultCount = int.Parse(AdultComboBox.SelectedItem.ToString().Substring(0, 1));
             KidCount = int.Parse(KidComboBox.SelectedItem.ToString().Substring(0, 1));
             PeopleCount = AdultCount + KidCount;
-            this.DialogResult = true;
+            Window w = new 選擇航班_WPF();
+            w.Show();
+            this.Hide();
+
+
 
 
         }

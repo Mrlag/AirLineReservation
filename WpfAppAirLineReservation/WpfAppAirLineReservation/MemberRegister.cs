@@ -51,10 +51,20 @@ namespace WpfAppAirLineReservation
         {
 
 
-            AirLineReservationEntities dc = new AirLineReservationEntities();
-            dc.Passengers.AddRange(new Passenger() { PassportNo = PassportTB.Text, FirstName=FirstNameTB.Text,LastName=LastNameTB.Text,
-            Gender=comboBox1.Text,ContactNumber=ContactPersonTB.Text,PassengerEmail=EmailTB.Text,BornDate=BorndateTimePicker.Value,PassportExpiredDate=PexpireddateTimePicker2.Value,Country=CountryTB.Text});
-            dc.SaveChanges();
+            //AirLineReservationEntities dc = new AirLineReservationEntities();
+            //dc.Passengers.AddRange(new Passenger()
+            //{  MemberAccounts
+            //    PassportNo = PassportTB.Text,
+            //    FirstName = FirstNameTB.Text,
+            //    LastName = LastNameTB.Text,
+            //    Gender = comboBox1.Text,
+            //    ContactNumber = ContactPersonTB.Text,
+            //    PassengerEmail = EmailTB.Text,
+            //    BornDate = BorndateTimePicker.Value,
+            //    PassportExpiredDate = PexpireddateTimePicker2.Value,
+            //    Country = CountryTB.Text
+            //};
+            //dc.SaveChanges();
         }
     }
 }

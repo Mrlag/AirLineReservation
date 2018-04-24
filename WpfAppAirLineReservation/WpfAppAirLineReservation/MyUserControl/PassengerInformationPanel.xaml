@@ -1,0 +1,31 @@
+﻿<UserControl x:Class="WpfAppAirLineReservation.MyUserControl.PassengerInformationPanel"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:WpfAppAirLineReservation.MyUserControl"
+             mc:Ignorable="d" 
+             d:DesignHeight="200" d:DesignWidth="650">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="32*"/>
+            <RowDefinition Height="193*"/>
+        </Grid.RowDefinitions>
+        <WrapPanel Grid.Row="1">
+            <Label  Width="65" Content="護照號碼:" Margin="10,20,10,20"></Label>
+            <TextBox Name="PassportNumber" Height="23" TextWrapping="Wrap" Text="TextBox" Width="120"/>
+            <Label  Width="65" Content="姓:" Margin="10,20,10,20"/>
+            <TextBox x:Name="LastName" Height="23" TextWrapping="Wrap" Text="TextBox" Width="120" />
+            <Label Width="65"  Content="名:" Margin="10,20,10,20"/>
+            <TextBox x:Name="FirstName" Height="23" TextWrapping="Wrap" Text="TextBox" Width="120" />
+            <Label Width="65" Content="性別:" Margin="10,20,10,20"/>
+            <ComboBox Name="GenderCombo" Width="120" Margin="10,20,10,20"/>
+            <Label Width="65" Content="連絡電話:" Margin="10,20,10,20"/>
+            <TextBox x:Name="ContactNumber" Height="23" TextWrapping="Wrap" Text="TextBox" Width="120" />
+            <Label Width="65"  Content="電子信箱:" Margin="10,20,10,20"/>
+            <TextBox x:Name="Email" Height="23" TextWrapping="Wrap" Text="TextBox" Width="110" />
+        </WrapPanel>
+        <Label Name="PassengerNumber" Content="顧客1...." HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" Width="85" Margin="0,-1,0,0"/>
+
+    </Grid>
+</UserControl>

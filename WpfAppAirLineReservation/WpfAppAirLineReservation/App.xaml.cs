@@ -17,20 +17,13 @@ namespace WpfAppAirLineReservation
         {
             this.ShutdownMode = ShutdownMode.OnLastWindowClose;
 
-            //AirLineReservation W = new AirLineReservation();
-            //W.Show();
 
             //MainWindow W = new MainWindow();
-            //W.ShowDialog();
-            //if (W.DialogResult == true)
-            //{
-            //    W.Close();
-            //    選擇航班 form = new 選擇航班();
-            //    form.ShowDialog();
-            //}
+            //W.Show();
 
-            MemberRegister f = new MemberRegister();
-            f.Show();
+            PassengerInformation w = new PassengerInformation();
+            w.Show();
+
 
         }
     }
