@@ -78,7 +78,7 @@ namespace WpfAppAirLineReservation
             KidCount = int.Parse(KidComboBox.SelectedItem.ToString().Substring(0, 1));
             PeopleCount = AdultCount + KidCount;
             Window w = new 選擇航班_WPF();
-            w.Show();
+            w.ShowDialog();
             this.Hide();
 
 

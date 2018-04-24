@@ -89,7 +89,7 @@
 
 
         </ScrollViewer>
-        <Button IsEnabled="False" Name="NextStepButton" Content="下一步" Grid.Column="3" HorizontalAlignment="Left" Margin="28,33,0,0" Grid.Row="3" VerticalAlignment="Top" Width="85" Height="43"/>
+        <Button IsEnabled="False" Name="NextStepButton" Content="下一步" Grid.Column="3" HorizontalAlignment="Left" Margin="28,33,0,0" Grid.Row="3" VerticalAlignment="Top" Width="85" Height="43" Click="NextStepButton_Click"/>
 
 
     </Grid>

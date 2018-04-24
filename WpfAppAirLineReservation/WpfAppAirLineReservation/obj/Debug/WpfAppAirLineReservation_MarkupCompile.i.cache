@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 D:\講義及作業\專題資料\WPF 專題\WpfAppAirLineReservation\WpfAppAirLineReservation\App.xaml
-71154500082
-4-463648738
-451751995083
+71059819859
+24544267
+45-2046786561
 20-124066856
-AirReservationTicketOrder\MainWindow.xaml;MyUserControl\ExpanderList.xaml;MyUserControl\PassengerInformationPanel.xaml;PassengerInformation.xaml;Themes\Generic.xaml;TicketDetailWPF.xaml;AirReservationTicketOrder\選擇航班 WPF.xaml;
+AirReservationTicketOrder\MainWindow.xaml;MyUserControl\ExpanderList.xaml;MyUserControl\PassengerInformationPanel.xaml;AirReservationTicketOrder\PassengerInformation.xaml;Themes\Generic.xaml;MyUserControl\TicketDetailWPF.xaml;AirReservationTicketOrder\選擇航班 WPF.xaml;
 
-True
+False
 

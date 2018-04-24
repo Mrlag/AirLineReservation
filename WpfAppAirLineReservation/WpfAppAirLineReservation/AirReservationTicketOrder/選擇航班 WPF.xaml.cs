@@ -426,9 +426,12 @@ namespace WpfAppAirLineReservation
 
         }
 
-
-
-
+        private void NextStepButton_Click(object sender, RoutedEventArgs e)
+        {
+            PassengerInformation Pg = new PassengerInformation();
+            Pg.ShowDialog();
+            
+        }
     }
     public class ClientOrderList
     {

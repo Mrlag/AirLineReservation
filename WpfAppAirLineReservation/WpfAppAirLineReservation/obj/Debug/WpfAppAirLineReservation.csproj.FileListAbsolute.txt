@@ -94,9 +94,6 @@ G:\C# 作業\講義及作業\專題資料\WPF 專題\WpfAppAirLineReservation\Wp
 G:\C# 作業\講義及作業\專題資料\WPF 專題\WpfAppAirLineReservation\WpfAppAirLineReservation\bin\Debug\AirLineReservation.mdf
 G:\C# 作業\講義及作業\專題資料\WPF 專題\WpfAppAirLineReservation\WpfAppAirLineReservation\bin\Debug\AirLineReservation_log.ldf
 G:\C# 作業\講義及作業\專題資料\WPF 專題\WpfAppAirLineReservation\WpfAppAirLineReservation\obj\Debug\WpfAppAirLineReservation_Content.g.cs
-D:\講義及作業\專題資料\WPF 專題\WpfAppAirLineReservation\WpfAppAirLineReservation\obj\Debug\WpfAppAirLineReservation_Content.g.cs
-D:\講義及作業\專題資料\WPF 專題\WpfAppAirLineReservation\WpfAppAirLineReservation\bin\Debug\AirLineReservation.mdf
-D:\講義及作業\專題資料\WPF 專題\WpfAppAirLineReservation\WpfAppAirLineReservation\bin\Debug\AirLineReservation_log.ldf
 D:\講義及作業\專題資料\WPF 專題\WpfAppAirLineReservation\WpfAppAirLineReservation\bin\Debug\EntityFramework.dll
 D:\講義及作業\專題資料\WPF 專題\WpfAppAirLineReservation\WpfAppAirLineReservation\bin\Debug\EntityFramework.SqlServer.dll
 D:\講義及作業\專題資料\WPF 專題\WpfAppAirLineReservation\WpfAppAirLineReservation\bin\Debug\EntityFramework.xml
@@ -155,16 +152,17 @@ G:\TSQL\講義及作業\專題資料\WPF 專題\WpfAppAirLineReservation\WpfAppA
 G:\TSQL\講義及作業\專題資料\WPF 專題\WpfAppAirLineReservation\WpfAppAirLineReservation\obj\Debug\WpfAppAirLineReservation.exe
 G:\TSQL\講義及作業\專題資料\WPF 專題\WpfAppAirLineReservation\WpfAppAirLineReservation\obj\Debug\WpfAppAirLineReservation.pdb
 D:\講義及作業\專題資料\WPF 專題\WpfAppAirLineReservation\WpfAppAirLineReservation\obj\Debug\MyUserControl\ExpanderList.g.cs
-D:\講義及作業\專題資料\WPF 專題\WpfAppAirLineReservation\WpfAppAirLineReservation\obj\Debug\TicketDetailWPF.g.cs
 D:\講義及作業\專題資料\WPF 專題\WpfAppAirLineReservation\WpfAppAirLineReservation\obj\Debug\GeneratedInternalTypeHelper.g.cs
 D:\講義及作業\專題資料\WPF 專題\WpfAppAirLineReservation\WpfAppAirLineReservation\obj\Debug\MyUserControl\ExpanderList.baml
 D:\講義及作業\專題資料\WPF 專題\WpfAppAirLineReservation\WpfAppAirLineReservation\obj\Debug\Themes\Generic.baml
-D:\講義及作業\專題資料\WPF 專題\WpfAppAirLineReservation\WpfAppAirLineReservation\obj\Debug\TicketDetailWPF.baml
 D:\講義及作業\專題資料\WPF 專題\WpfAppAirLineReservation\WpfAppAirLineReservation\obj\Debug\MyUserControl\PassengerInformationPanel.g.cs
-D:\講義及作業\專題資料\WPF 專題\WpfAppAirLineReservation\WpfAppAirLineReservation\obj\Debug\PassengerInformation.g.cs
 D:\講義及作業\專題資料\WPF 專題\WpfAppAirLineReservation\WpfAppAirLineReservation\obj\Debug\MyUserControl\PassengerInformationPanel.baml
-D:\講義及作業\專題資料\WPF 專題\WpfAppAirLineReservation\WpfAppAirLineReservation\obj\Debug\PassengerInformation.baml
 D:\講義及作業\專題資料\WPF 專題\WpfAppAirLineReservation\WpfAppAirLineReservation\obj\Debug\AirReservationTicketOrder\MainWindow.g.cs
 D:\講義及作業\專題資料\WPF 專題\WpfAppAirLineReservation\WpfAppAirLineReservation\obj\Debug\AirReservationTicketOrder\MainWindow.baml
 D:\講義及作業\專題資料\WPF 專題\WpfAppAirLineReservation\WpfAppAirLineReservation\obj\Debug\AirReservationTicketOrder\選擇航班 WPF.g.cs
 D:\講義及作業\專題資料\WPF 專題\WpfAppAirLineReservation\WpfAppAirLineReservation\obj\Debug\AirReservationTicketOrder\選擇航班 WPF.baml
+D:\講義及作業\專題資料\WPF 專題\WpfAppAirLineReservation\WpfAppAirLineReservation\obj\Debug\MyUserControl\TicketDetailWPF.g.cs
+D:\講義及作業\專題資料\WPF 專題\WpfAppAirLineReservation\WpfAppAirLineReservation\obj\Debug\MyUserControl\TicketDetailWPF.baml
+D:\講義及作業\專題資料\WPF 專題\WpfAppAirLineReservation\WpfAppAirLineReservation\obj\Debug\AirReservationTicketOrder\PassengerInformation.g.cs
+D:\講義及作業\專題資料\WPF 專題\WpfAppAirLineReservation\WpfAppAirLineReservation\obj\Debug\AirReservationTicketOrder\PassengerInformation.baml
+D:\講義及作業\專題資料\WPF 專題\WpfAppAirLineReservation\WpfAppAirLineReservation\obj\Debug\WpfAppAirLineReservation_Content.g.cs
