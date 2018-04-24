@@ -22,7 +22,6 @@ namespace WpfAppAirLineReservation
         }
     
         public int MemberID { get; set; }
-        public int PassengerID { get; set; }
         public string MemberEmail { get; set; }
         public string MemberPassword { get; set; }
         public Nullable<int> MemberPoint { get; set; }

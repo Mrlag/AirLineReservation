@@ -18,8 +18,8 @@ namespace WpfAppAirLineReservation
         public TravelAgency()
         {
             this.Coupons = new HashSet<Coupon>();
+            this.Coupons1 = new HashSet<Coupon>();
             this.Orders = new HashSet<Order>();
-            this.WifiOrders = new HashSet<WifiOrder>();
         }
     
         public int UniformNo { get; set; }
@@ -30,8 +30,8 @@ namespace WpfAppAirLineReservation
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Coupon> Coupons { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Order> Orders { get; set; }
+        public virtual ICollection<Coupon> Coupons1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<WifiOrder> WifiOrders { get; set; }
+        public virtual ICollection<Order> Orders { get; set; }
     }
 }

@@ -1,0 +1,686 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="AirLineReservationModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="AirLine">
+    <Key>
+      <PropertyRef Name="AirLineID" />
+    </Key>
+    <Property Name="AirLineID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="AirLineName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Coupons" Relationship="Self.FK_Coupon_AirLine" FromRole="AirLine" ToRole="Coupon" />
+    <NavigationProperty Name="Orders" Relationship="Self.FK_Order_AirLine" FromRole="AirLine" ToRole="Order" />
+    <NavigationProperty Name="TaxFreeProducts" Relationship="Self.FK_TaxFreeProduct_AirLine" FromRole="AirLine" ToRole="TaxFreeProduct" />
+  </EntityType>
+  <EntityType Name="City">
+    <Key>
+      <PropertyRef Name="CityID" />
+    </Key>
+    <Property Name="CityID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CityName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="CountryID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Country" Relationship="Self.FK_City_Country1" FromRole="City" ToRole="Country" />
+    <NavigationProperty Name="Orders" Relationship="Self.FK_Order_City" FromRole="City" ToRole="Order" />
+    <NavigationProperty Name="Orders1" Relationship="Self.FK_Order_City1" FromRole="City" ToRole="Order" />
+  </EntityType>
+  <EntityType Name="Country">
+    <Key>
+      <PropertyRef Name="CountryID" />
+    </Key>
+    <Property Name="CountryID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CountryName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Cities" Relationship="Self.FK_City_Country1" FromRole="Country" ToRole="City" />
+    <NavigationProperty Name="Passengers" Relationship="Self.FK_Passenger_Country" FromRole="Country" ToRole="Passenger" />
+  </EntityType>
+  <EntityType Name="Coupon">
+    <Key>
+      <PropertyRef Name="CouponID" />
+    </Key>
+    <Property Name="CouponID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CouponCode" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="AirLineID" Type="Int32" />
+    <Property Name="UniformNo" Type="Int32" />
+    <Property Name="Stock" Type="Int32" Nullable="false" />
+    <Property Name="Discount" Type="Double" />
+    <Property Name="Description" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="CouponStartDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="CouponEndDate" Type="DateTime" Nullable="false" Precision="0" />
+    <NavigationProperty Name="AirLine" Relationship="Self.FK_Coupon_AirLine" FromRole="Coupon" ToRole="AirLine" />
+    <NavigationProperty Name="TravelAgency" Relationship="Self.FK_Coupon_TravelAgency" FromRole="Coupon" ToRole="TravelAgency" />
+    <NavigationProperty Name="TravelAgency1" Relationship="Self.FK_Coupon_TravelAgency1" FromRole="Coupon" ToRole="TravelAgency" />
+    <NavigationProperty Name="Orders" Relationship="Self.FK_Order_Coupon" FromRole="Coupon" ToRole="Order" />
+    <NavigationProperty Name="TaxFreeProductOrders" Relationship="Self.FK_TaxFreeProductOrder_Coupon" FromRole="Coupon" ToRole="TaxFreeProductOrder" />
+  </EntityType>
+  <EntityType Name="MemberAccount">
+    <Key>
+      <PropertyRef Name="MemberID" />
+    </Key>
+    <Property Name="MemberID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MemberEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="MemberPassword" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="MemberPoint" Type="Int32" />
+    <NavigationProperty Name="Passenger" Relationship="Self.FK_MemberAccount_Passenger" FromRole="MemberAccount" ToRole="Passenger" />
+    <NavigationProperty Name="MemberFeedbacks" Relationship="Self.FK_MemberFeedback_MemberAccount" FromRole="MemberAccount" ToRole="MemberFeedback" />
+    <NavigationProperty Name="Orders" Relationship="Self.FK_Order_MemberAccount" FromRole="MemberAccount" ToRole="Order" />
+  </EntityType>
+  <EntityType Name="MemberFeedback">
+    <Key>
+      <PropertyRef Name="MemberFeedbackID" />
+    </Key>
+    <Property Name="MemberFeedbackID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MemberID" Type="Int32" Nullable="false" />
+    <Property Name="OrderID" Type="Int32" Nullable="false" />
+    <Property Name="MemberRating" Type="Int32" Nullable="false" />
+    <Property Name="Comment" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="CommentDate" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="MemberAccount" Relationship="Self.FK_MemberFeedback_MemberAccount" FromRole="MemberFeedback" ToRole="MemberAccount" />
+    <NavigationProperty Name="Order" Relationship="Self.FK_MemberFeedback_Order" FromRole="MemberFeedback" ToRole="Order" />
+  </EntityType>
+  <EntityType Name="Newsletter">
+    <Key>
+      <PropertyRef Name="NewsletterID" />
+    </Key>
+    <Property Name="NewsletterID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MailDetail" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="MailDate" Type="DateTime" Nullable="false" Precision="0" />
+  </EntityType>
+  <EntityType Name="Order">
+    <Key>
+      <PropertyRef Name="OrderID" />
+    </Key>
+    <Property Name="OrderID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="AirLineID" Type="Int32" Nullable="false" />
+    <Property Name="UniformNo" Type="Int32" />
+    <Property Name="DeparturePlace" Type="Int32" Nullable="false" />
+    <Property Name="ArrivalPlace" Type="Int32" Nullable="false" />
+    <Property Name="TravalClassID" Type="Int32" Nullable="false" />
+    <Property Name="MemberID" Type="Int32" />
+    <Property Name="DepartureDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="DepartureTime" Type="Time" Nullable="false" Precision="7" />
+    <Property Name="ArrivalDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="ArrivalTime" Type="Time" Nullable="false" Precision="7" />
+    <Property Name="CouponID" Type="Int32" />
+    <Property Name="FlightRoute" Type="Int32" />
+    <Property Name="OrderStatusID" Type="Int32" Nullable="false" />
+    <Property Name="OrderDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="PaymentMethodID" Type="Int32" Nullable="false" />
+    <Property Name="AdultCount" Type="Int32" Nullable="false" />
+    <Property Name="AdultPrice" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="ChildCount" Type="Int32" Nullable="false" />
+    <Property Name="ChildPrice" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="ServiceFee" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <NavigationProperty Name="AirLine" Relationship="Self.FK_Order_AirLine" FromRole="Order" ToRole="AirLine" />
+    <NavigationProperty Name="City" Relationship="Self.FK_Order_City" FromRole="Order" ToRole="City" />
+    <NavigationProperty Name="City1" Relationship="Self.FK_Order_City1" FromRole="Order" ToRole="City" />
+    <NavigationProperty Name="Coupon" Relationship="Self.FK_Order_Coupon" FromRole="Order" ToRole="Coupon" />
+    <NavigationProperty Name="MemberAccount" Relationship="Self.FK_Order_MemberAccount" FromRole="Order" ToRole="MemberAccount" />
+    <NavigationProperty Name="MemberFeedbacks" Relationship="Self.FK_MemberFeedback_Order" FromRole="Order" ToRole="MemberFeedback" />
+    <NavigationProperty Name="OrderStatu" Relationship="Self.FK_Order_OrderStatus" FromRole="Order" ToRole="OrderStatus" />
+    <NavigationProperty Name="PaymentMethod" Relationship="Self.FK_Order_PaymentMethod" FromRole="Order" ToRole="PaymentMethod" />
+    <NavigationProperty Name="TravelAgency" Relationship="Self.FK_Order_TravelAgency" FromRole="Order" ToRole="TravelAgency" />
+    <NavigationProperty Name="TravelClass" Relationship="Self.FK_Order_TravelClass" FromRole="Order" ToRole="TravelClass" />
+    <NavigationProperty Name="OrderDetails" Relationship="Self.FK_OrderDetail_Order" FromRole="Order" ToRole="OrderDetail" />
+  </EntityType>
+  <EntityType Name="OrderDetail">
+    <Key>
+      <PropertyRef Name="OrderDetailID" />
+    </Key>
+    <Property Name="OrderDetailID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="OrderID" Type="Int32" Nullable="false" />
+    <Property Name="PassengerID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Order" Relationship="Self.FK_OrderDetail_Order" FromRole="OrderDetail" ToRole="Order" />
+    <NavigationProperty Name="Passenger" Relationship="Self.FK_OrderDetail_Passenger" FromRole="OrderDetail" ToRole="Passenger" />
+  </EntityType>
+  <EntityType Name="OrderStatu">
+    <Key>
+      <PropertyRef Name="OrderStatusID" />
+    </Key>
+    <Property Name="OrderStatusID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="OrderStatusName" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Orders" Relationship="Self.FK_Order_OrderStatus" FromRole="OrderStatus" ToRole="Order" />
+  </EntityType>
+  <EntityType Name="Passenger">
+    <Key>
+      <PropertyRef Name="PassengerID" />
+    </Key>
+    <Property Name="PassengerID" Type="Int32" Nullable="false" />
+    <Property Name="PassportNo" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Gender" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="ContactNumber" Type="String" MaxLength="12" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="PassengerEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="BornDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="PassportExpiredDate" Type="DateTime" Precision="0" />
+    <Property Name="CountryID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Country" Relationship="Self.FK_Passenger_Country" FromRole="Passenger" ToRole="Country" />
+    <NavigationProperty Name="MemberAccount" Relationship="Self.FK_MemberAccount_Passenger" FromRole="Passenger" ToRole="MemberAccount" />
+    <NavigationProperty Name="OrderDetails" Relationship="Self.FK_OrderDetail_Passenger" FromRole="Passenger" ToRole="OrderDetail" />
+    <NavigationProperty Name="TaxFreeProductOrders" Relationship="Self.FK_TaxFreeProductOrder_Passenger" FromRole="Passenger" ToRole="TaxFreeProductOrder" />
+  </EntityType>
+  <EntityType Name="PaymentMethod">
+    <Key>
+      <PropertyRef Name="PaymentMethodID" />
+    </Key>
+    <Property Name="PaymentMethodID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PaymentMethod1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Orders" Relationship="Self.FK_Order_PaymentMethod" FromRole="PaymentMethod" ToRole="Order" />
+    <NavigationProperty Name="TaxFreeProductOrders" Relationship="Self.FK_TaxFreeProductOrder_PaymentMethod" FromRole="PaymentMethod" ToRole="TaxFreeProductOrder" />
+  </EntityType>
+  <EntityType Name="ProductCategory">
+    <Key>
+      <PropertyRef Name="ProductCategoryID" />
+    </Key>
+    <Property Name="ProductCategoryID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProductCategoryName" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="TaxFreeProducts" Relationship="Self.FK_TaxFreeProduct_ProductCategory" FromRole="ProductCategory" ToRole="TaxFreeProduct" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="TaxFreeProduct">
+    <Key>
+      <PropertyRef Name="ProductID" />
+    </Key>
+    <Property Name="ProductID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProductCategoryID" Type="Int32" Nullable="false" />
+    <Property Name="AirLineID" Type="Int32" Nullable="false" />
+    <Property Name="ProductName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ProductPrice" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="ProductInStock" Type="Int32" Nullable="false" />
+    <Property Name="ProductDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="ProductPhoto" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="ProductPoint" Type="Int32" Nullable="false" />
+    <Property Name="ProductPhotoBinary" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <NavigationProperty Name="AirLine" Relationship="Self.FK_TaxFreeProduct_AirLine" FromRole="TaxFreeProduct" ToRole="AirLine" />
+    <NavigationProperty Name="ProductCategory" Relationship="Self.FK_TaxFreeProduct_ProductCategory" FromRole="TaxFreeProduct" ToRole="ProductCategory" />
+    <NavigationProperty Name="TaxFreeProductOrderDetails" Relationship="Self.FK_TaxFreeProductOrderDetail_TaxFreeProduct" FromRole="TaxFreeProduct" ToRole="TaxFreeProductOrderDetail" />
+  </EntityType>
+  <EntityType Name="TaxFreeProductOrder">
+    <Key>
+      <PropertyRef Name="TaxFreeProductOrderID" />
+    </Key>
+    <Property Name="TaxFreeProductOrderID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CouponID" Type="Int32" />
+    <Property Name="PaymentMethodID" Type="Int32" Nullable="false" />
+    <Property Name="OrderDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="PassengerID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Coupon" Relationship="Self.FK_TaxFreeProductOrder_Coupon" FromRole="TaxFreeProductOrder" ToRole="Coupon" />
+    <NavigationProperty Name="Passenger" Relationship="Self.FK_TaxFreeProductOrder_Passenger" FromRole="TaxFreeProductOrder" ToRole="Passenger" />
+    <NavigationProperty Name="PaymentMethod" Relationship="Self.FK_TaxFreeProductOrder_PaymentMethod" FromRole="TaxFreeProductOrder" ToRole="PaymentMethod" />
+    <NavigationProperty Name="TaxFreeProductOrderDetails" Relationship="Self.FK_TaxFreeProductOrderDetail_TaxFreeProductOrder" FromRole="TaxFreeProductOrder" ToRole="TaxFreeProductOrderDetail" />
+  </EntityType>
+  <EntityType Name="TaxFreeProductOrderDetail">
+    <Key>
+      <PropertyRef Name="TaxFreeProductOrderDetailID" />
+    </Key>
+    <Property Name="TaxFreeProductOrderDetailID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TaxFreeProductOrderID" Type="Int32" Nullable="false" />
+    <Property Name="ProductID" Type="Int32" Nullable="false" />
+    <Property Name="Quantity" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="TaxFreeProduct" Relationship="Self.FK_TaxFreeProductOrderDetail_TaxFreeProduct" FromRole="TaxFreeProductOrderDetail" ToRole="TaxFreeProduct" />
+    <NavigationProperty Name="TaxFreeProductOrder" Relationship="Self.FK_TaxFreeProductOrderDetail_TaxFreeProductOrder" FromRole="TaxFreeProductOrderDetail" ToRole="TaxFreeProductOrder" />
+  </EntityType>
+  <EntityType Name="TravelAgency">
+    <Key>
+      <PropertyRef Name="UniformNo" />
+    </Key>
+    <Property Name="UniformNo" Type="Int32" Nullable="false" />
+    <Property Name="TravelAgencyName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="TravelAgencyEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TravelAgencyPassword" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Coupons" Relationship="Self.FK_Coupon_TravelAgency" FromRole="TravelAgency" ToRole="Coupon" />
+    <NavigationProperty Name="Coupons1" Relationship="Self.FK_Coupon_TravelAgency1" FromRole="TravelAgency" ToRole="Coupon" />
+    <NavigationProperty Name="Orders" Relationship="Self.FK_Order_TravelAgency" FromRole="TravelAgency" ToRole="Order" />
+  </EntityType>
+  <EntityType Name="TravelClass">
+    <Key>
+      <PropertyRef Name="TravalClassID" />
+    </Key>
+    <Property Name="TravalClassID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TravalClassName" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Orders" Relationship="Self.FK_Order_TravelClass" FromRole="TravelClass" ToRole="Order" />
+  </EntityType>
+  <Association Name="FK_Coupon_AirLine">
+    <End Role="AirLine" Type="Self.AirLine" Multiplicity="0..1" />
+    <End Role="Coupon" Type="Self.Coupon" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AirLine">
+        <PropertyRef Name="AirLineID" />
+      </Principal>
+      <Dependent Role="Coupon">
+        <PropertyRef Name="AirLineID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Order_AirLine">
+    <End Role="AirLine" Type="Self.AirLine" Multiplicity="1" />
+    <End Role="Order" Type="Self.Order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AirLine">
+        <PropertyRef Name="AirLineID" />
+      </Principal>
+      <Dependent Role="Order">
+        <PropertyRef Name="AirLineID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TaxFreeProduct_AirLine">
+    <End Role="AirLine" Type="Self.AirLine" Multiplicity="1" />
+    <End Role="TaxFreeProduct" Type="Self.TaxFreeProduct" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AirLine">
+        <PropertyRef Name="AirLineID" />
+      </Principal>
+      <Dependent Role="TaxFreeProduct">
+        <PropertyRef Name="AirLineID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_City_Country1">
+    <End Role="Country" Type="Self.Country" Multiplicity="1" />
+    <End Role="City" Type="Self.City" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Country">
+        <PropertyRef Name="CountryID" />
+      </Principal>
+      <Dependent Role="City">
+        <PropertyRef Name="CountryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Order_City">
+    <End Role="City" Type="Self.City" Multiplicity="1" />
+    <End Role="Order" Type="Self.Order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="City">
+        <PropertyRef Name="CityID" />
+      </Principal>
+      <Dependent Role="Order">
+        <PropertyRef Name="DeparturePlace" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Order_City1">
+    <End Role="City" Type="Self.City" Multiplicity="1" />
+    <End Role="Order" Type="Self.Order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="City">
+        <PropertyRef Name="CityID" />
+      </Principal>
+      <Dependent Role="Order">
+        <PropertyRef Name="ArrivalPlace" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Passenger_Country">
+    <End Role="Country" Type="Self.Country" Multiplicity="1" />
+    <End Role="Passenger" Type="Self.Passenger" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Country">
+        <PropertyRef Name="CountryID" />
+      </Principal>
+      <Dependent Role="Passenger">
+        <PropertyRef Name="CountryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Coupon_TravelAgency">
+    <End Role="TravelAgency" Type="Self.TravelAgency" Multiplicity="0..1" />
+    <End Role="Coupon" Type="Self.Coupon" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TravelAgency">
+        <PropertyRef Name="UniformNo" />
+      </Principal>
+      <Dependent Role="Coupon">
+        <PropertyRef Name="UniformNo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Coupon_TravelAgency1">
+    <End Role="TravelAgency" Type="Self.TravelAgency" Multiplicity="0..1" />
+    <End Role="Coupon" Type="Self.Coupon" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TravelAgency">
+        <PropertyRef Name="UniformNo" />
+      </Principal>
+      <Dependent Role="Coupon">
+        <PropertyRef Name="UniformNo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Order_Coupon">
+    <End Role="Coupon" Type="Self.Coupon" Multiplicity="0..1" />
+    <End Role="Order" Type="Self.Order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Coupon">
+        <PropertyRef Name="CouponID" />
+      </Principal>
+      <Dependent Role="Order">
+        <PropertyRef Name="CouponID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TaxFreeProductOrder_Coupon">
+    <End Role="Coupon" Type="Self.Coupon" Multiplicity="0..1" />
+    <End Role="TaxFreeProductOrder" Type="Self.TaxFreeProductOrder" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Coupon">
+        <PropertyRef Name="CouponID" />
+      </Principal>
+      <Dependent Role="TaxFreeProductOrder">
+        <PropertyRef Name="CouponID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MemberAccount_Passenger">
+    <End Role="Passenger" Type="Self.Passenger" Multiplicity="1" />
+    <End Role="MemberAccount" Type="Self.MemberAccount" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Passenger">
+        <PropertyRef Name="PassengerID" />
+      </Principal>
+      <Dependent Role="MemberAccount">
+        <PropertyRef Name="MemberID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MemberFeedback_MemberAccount">
+    <End Role="MemberAccount" Type="Self.MemberAccount" Multiplicity="1" />
+    <End Role="MemberFeedback" Type="Self.MemberFeedback" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MemberAccount">
+        <PropertyRef Name="MemberID" />
+      </Principal>
+      <Dependent Role="MemberFeedback">
+        <PropertyRef Name="MemberID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Order_MemberAccount">
+    <End Role="MemberAccount" Type="Self.MemberAccount" Multiplicity="0..1" />
+    <End Role="Order" Type="Self.Order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MemberAccount">
+        <PropertyRef Name="MemberID" />
+      </Principal>
+      <Dependent Role="Order">
+        <PropertyRef Name="MemberID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MemberFeedback_Order">
+    <End Role="Order" Type="Self.Order" Multiplicity="1" />
+    <End Role="MemberFeedback" Type="Self.MemberFeedback" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Order">
+        <PropertyRef Name="OrderID" />
+      </Principal>
+      <Dependent Role="MemberFeedback">
+        <PropertyRef Name="OrderID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Order_OrderStatus">
+    <End Role="OrderStatus" Type="Self.OrderStatu" Multiplicity="1" />
+    <End Role="Order" Type="Self.Order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OrderStatus">
+        <PropertyRef Name="OrderStatusID" />
+      </Principal>
+      <Dependent Role="Order">
+        <PropertyRef Name="OrderStatusID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Order_PaymentMethod">
+    <End Role="PaymentMethod" Type="Self.PaymentMethod" Multiplicity="1" />
+    <End Role="Order" Type="Self.Order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PaymentMethod">
+        <PropertyRef Name="PaymentMethodID" />
+      </Principal>
+      <Dependent Role="Order">
+        <PropertyRef Name="PaymentMethodID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Order_TravelAgency">
+    <End Role="TravelAgency" Type="Self.TravelAgency" Multiplicity="0..1" />
+    <End Role="Order" Type="Self.Order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TravelAgency">
+        <PropertyRef Name="UniformNo" />
+      </Principal>
+      <Dependent Role="Order">
+        <PropertyRef Name="UniformNo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Order_TravelClass">
+    <End Role="TravelClass" Type="Self.TravelClass" Multiplicity="1" />
+    <End Role="Order" Type="Self.Order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TravelClass">
+        <PropertyRef Name="TravalClassID" />
+      </Principal>
+      <Dependent Role="Order">
+        <PropertyRef Name="TravalClassID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OrderDetail_Order">
+    <End Role="Order" Type="Self.Order" Multiplicity="1" />
+    <End Role="OrderDetail" Type="Self.OrderDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Order">
+        <PropertyRef Name="OrderID" />
+      </Principal>
+      <Dependent Role="OrderDetail">
+        <PropertyRef Name="OrderID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OrderDetail_Passenger">
+    <End Role="Passenger" Type="Self.Passenger" Multiplicity="1" />
+    <End Role="OrderDetail" Type="Self.OrderDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Passenger">
+        <PropertyRef Name="PassengerID" />
+      </Principal>
+      <Dependent Role="OrderDetail">
+        <PropertyRef Name="PassengerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TaxFreeProductOrder_Passenger">
+    <End Role="Passenger" Type="Self.Passenger" Multiplicity="1" />
+    <End Role="TaxFreeProductOrder" Type="Self.TaxFreeProductOrder" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Passenger">
+        <PropertyRef Name="PassengerID" />
+      </Principal>
+      <Dependent Role="TaxFreeProductOrder">
+        <PropertyRef Name="PassengerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TaxFreeProductOrder_PaymentMethod">
+    <End Role="PaymentMethod" Type="Self.PaymentMethod" Multiplicity="1" />
+    <End Role="TaxFreeProductOrder" Type="Self.TaxFreeProductOrder" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PaymentMethod">
+        <PropertyRef Name="PaymentMethodID" />
+      </Principal>
+      <Dependent Role="TaxFreeProductOrder">
+        <PropertyRef Name="PaymentMethodID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TaxFreeProduct_ProductCategory">
+    <End Role="ProductCategory" Type="Self.ProductCategory" Multiplicity="1" />
+    <End Role="TaxFreeProduct" Type="Self.TaxFreeProduct" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ProductCategory">
+        <PropertyRef Name="ProductCategoryID" />
+      </Principal>
+      <Dependent Role="TaxFreeProduct">
+        <PropertyRef Name="ProductCategoryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TaxFreeProductOrderDetail_TaxFreeProduct">
+    <End Role="TaxFreeProduct" Type="Self.TaxFreeProduct" Multiplicity="1" />
+    <End Role="TaxFreeProductOrderDetail" Type="Self.TaxFreeProductOrderDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TaxFreeProduct">
+        <PropertyRef Name="ProductID" />
+      </Principal>
+      <Dependent Role="TaxFreeProductOrderDetail">
+        <PropertyRef Name="ProductID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TaxFreeProductOrderDetail_TaxFreeProductOrder">
+    <End Role="TaxFreeProductOrder" Type="Self.TaxFreeProductOrder" Multiplicity="1" />
+    <End Role="TaxFreeProductOrderDetail" Type="Self.TaxFreeProductOrderDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TaxFreeProductOrder">
+        <PropertyRef Name="TaxFreeProductOrderID" />
+      </Principal>
+      <Dependent Role="TaxFreeProductOrderDetail">
+        <PropertyRef Name="TaxFreeProductOrderID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="AirLineReservationEntities1" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="AirLines" EntityType="Self.AirLine" />
+    <EntitySet Name="Cities" EntityType="Self.City" />
+    <EntitySet Name="Countries" EntityType="Self.Country" />
+    <EntitySet Name="Coupons" EntityType="Self.Coupon" />
+    <EntitySet Name="MemberAccounts" EntityType="Self.MemberAccount" />
+    <EntitySet Name="MemberFeedbacks" EntityType="Self.MemberFeedback" />
+    <EntitySet Name="Newsletters" EntityType="Self.Newsletter" />
+    <EntitySet Name="Orders" EntityType="Self.Order" />
+    <EntitySet Name="OrderDetails" EntityType="Self.OrderDetail" />
+    <EntitySet Name="OrderStatus" EntityType="Self.OrderStatu" />
+    <EntitySet Name="Passengers" EntityType="Self.Passenger" />
+    <EntitySet Name="PaymentMethods" EntityType="Self.PaymentMethod" />
+    <EntitySet Name="ProductCategories" EntityType="Self.ProductCategory" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+    <EntitySet Name="TaxFreeProducts" EntityType="Self.TaxFreeProduct" />
+    <EntitySet Name="TaxFreeProductOrders" EntityType="Self.TaxFreeProductOrder" />
+    <EntitySet Name="TaxFreeProductOrderDetails" EntityType="Self.TaxFreeProductOrderDetail" />
+    <EntitySet Name="TravelAgencies" EntityType="Self.TravelAgency" />
+    <EntitySet Name="TravelClasses" EntityType="Self.TravelClass" />
+    <AssociationSet Name="FK_Coupon_AirLine" Association="Self.FK_Coupon_AirLine">
+      <End Role="AirLine" EntitySet="AirLines" />
+      <End Role="Coupon" EntitySet="Coupons" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Order_AirLine" Association="Self.FK_Order_AirLine">
+      <End Role="AirLine" EntitySet="AirLines" />
+      <End Role="Order" EntitySet="Orders" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TaxFreeProduct_AirLine" Association="Self.FK_TaxFreeProduct_AirLine">
+      <End Role="AirLine" EntitySet="AirLines" />
+      <End Role="TaxFreeProduct" EntitySet="TaxFreeProducts" />
+    </AssociationSet>
+    <AssociationSet Name="FK_City_Country1" Association="Self.FK_City_Country1">
+      <End Role="Country" EntitySet="Countries" />
+      <End Role="City" EntitySet="Cities" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Order_City" Association="Self.FK_Order_City">
+      <End Role="City" EntitySet="Cities" />
+      <End Role="Order" EntitySet="Orders" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Order_City1" Association="Self.FK_Order_City1">
+      <End Role="City" EntitySet="Cities" />
+      <End Role="Order" EntitySet="Orders" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Passenger_Country" Association="Self.FK_Passenger_Country">
+      <End Role="Country" EntitySet="Countries" />
+      <End Role="Passenger" EntitySet="Passengers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Coupon_TravelAgency" Association="Self.FK_Coupon_TravelAgency">
+      <End Role="TravelAgency" EntitySet="TravelAgencies" />
+      <End Role="Coupon" EntitySet="Coupons" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Coupon_TravelAgency1" Association="Self.FK_Coupon_TravelAgency1">
+      <End Role="TravelAgency" EntitySet="TravelAgencies" />
+      <End Role="Coupon" EntitySet="Coupons" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Order_Coupon" Association="Self.FK_Order_Coupon">
+      <End Role="Coupon" EntitySet="Coupons" />
+      <End Role="Order" EntitySet="Orders" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TaxFreeProductOrder_Coupon" Association="Self.FK_TaxFreeProductOrder_Coupon">
+      <End Role="Coupon" EntitySet="Coupons" />
+      <End Role="TaxFreeProductOrder" EntitySet="TaxFreeProductOrders" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MemberAccount_Passenger" Association="Self.FK_MemberAccount_Passenger">
+      <End Role="Passenger" EntitySet="Passengers" />
+      <End Role="MemberAccount" EntitySet="MemberAccounts" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MemberFeedback_MemberAccount" Association="Self.FK_MemberFeedback_MemberAccount">
+      <End Role="MemberAccount" EntitySet="MemberAccounts" />
+      <End Role="MemberFeedback" EntitySet="MemberFeedbacks" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Order_MemberAccount" Association="Self.FK_Order_MemberAccount">
+      <End Role="MemberAccount" EntitySet="MemberAccounts" />
+      <End Role="Order" EntitySet="Orders" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MemberFeedback_Order" Association="Self.FK_MemberFeedback_Order">
+      <End Role="Order" EntitySet="Orders" />
+      <End Role="MemberFeedback" EntitySet="MemberFeedbacks" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Order_OrderStatus" Association="Self.FK_Order_OrderStatus">
+      <End Role="OrderStatus" EntitySet="OrderStatus" />
+      <End Role="Order" EntitySet="Orders" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Order_PaymentMethod" Association="Self.FK_Order_PaymentMethod">
+      <End Role="PaymentMethod" EntitySet="PaymentMethods" />
+      <End Role="Order" EntitySet="Orders" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Order_TravelAgency" Association="Self.FK_Order_TravelAgency">
+      <End Role="TravelAgency" EntitySet="TravelAgencies" />
+      <End Role="Order" EntitySet="Orders" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Order_TravelClass" Association="Self.FK_Order_TravelClass">
+      <End Role="TravelClass" EntitySet="TravelClasses" />
+      <End Role="Order" EntitySet="Orders" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OrderDetail_Order" Association="Self.FK_OrderDetail_Order">
+      <End Role="Order" EntitySet="Orders" />
+      <End Role="OrderDetail" EntitySet="OrderDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OrderDetail_Passenger" Association="Self.FK_OrderDetail_Passenger">
+      <End Role="Passenger" EntitySet="Passengers" />
+      <End Role="OrderDetail" EntitySet="OrderDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TaxFreeProductOrder_Passenger" Association="Self.FK_TaxFreeProductOrder_Passenger">
+      <End Role="Passenger" EntitySet="Passengers" />
+      <End Role="TaxFreeProductOrder" EntitySet="TaxFreeProductOrders" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TaxFreeProductOrder_PaymentMethod" Association="Self.FK_TaxFreeProductOrder_PaymentMethod">
+      <End Role="PaymentMethod" EntitySet="PaymentMethods" />
+      <End Role="TaxFreeProductOrder" EntitySet="TaxFreeProductOrders" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TaxFreeProduct_ProductCategory" Association="Self.FK_TaxFreeProduct_ProductCategory">
+      <End Role="ProductCategory" EntitySet="ProductCategories" />
+      <End Role="TaxFreeProduct" EntitySet="TaxFreeProducts" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TaxFreeProductOrderDetail_TaxFreeProduct" Association="Self.FK_TaxFreeProductOrderDetail_TaxFreeProduct">
+      <End Role="TaxFreeProduct" EntitySet="TaxFreeProducts" />
+      <End Role="TaxFreeProductOrderDetail" EntitySet="TaxFreeProductOrderDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TaxFreeProductOrderDetail_TaxFreeProductOrder" Association="Self.FK_TaxFreeProductOrderDetail_TaxFreeProductOrder">
+      <End Role="TaxFreeProductOrder" EntitySet="TaxFreeProductOrders" />
+      <End Role="TaxFreeProductOrderDetail" EntitySet="TaxFreeProductOrderDetails" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

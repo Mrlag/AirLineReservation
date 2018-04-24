@@ -17,10 +17,8 @@ namespace WpfAppAirLineReservation
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Passenger()
         {
-            this.MemberAccounts = new HashSet<MemberAccount>();
             this.OrderDetails = new HashSet<OrderDetail>();
-            this.TaxFreeProductOrderDetails = new HashSet<TaxFreeProductOrderDetail>();
-            this.WifiOrders = new HashSet<WifiOrder>();
+            this.TaxFreeProductOrders = new HashSet<TaxFreeProductOrder>();
         }
     
         public int PassengerID { get; set; }
@@ -32,15 +30,13 @@ namespace WpfAppAirLineReservation
         public string PassengerEmail { get; set; }
         public System.DateTime BornDate { get; set; }
         public Nullable<System.DateTime> PassportExpiredDate { get; set; }
-        public string Country { get; set; }
+        public int CountryID { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<MemberAccount> MemberAccounts { get; set; }
+        public virtual Country Country { get; set; }
+        public virtual MemberAccount MemberAccount { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<OrderDetail> OrderDetails { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<TaxFreeProductOrderDetail> TaxFreeProductOrderDetails { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<WifiOrder> WifiOrders { get; set; }
+        public virtual ICollection<TaxFreeProductOrder> TaxFreeProductOrders { get; set; }
     }
 }

@@ -14,17 +14,11 @@ namespace WpfAppAirLineReservation
     
     public partial class OrderDetail
     {
-        public string OrderID { get; set; }
-        public int PaymentMethodID { get; set; }
+        public int OrderDetailID { get; set; }
+        public int OrderID { get; set; }
         public int PassengerID { get; set; }
-        public decimal AdultPrice { get; set; }
-        public int AdultNumber { get; set; }
-        public Nullable<decimal> ChildPrice { get; set; }
-        public Nullable<int> ChildNumber { get; set; }
-        public Nullable<decimal> ServiceFee { get; set; }
     
         public virtual Order Order { get; set; }
         public virtual Passenger Passenger { get; set; }
-        public virtual PaymentMethod PaymentMethod { get; set; }
     }
 }

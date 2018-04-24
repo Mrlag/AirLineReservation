@@ -21,6 +21,7 @@ namespace WpfAppAirLineReservation
         }
     
         public int ProductID { get; set; }
+        public int ProductCategoryID { get; set; }
         public int AirLineID { get; set; }
         public string ProductName { get; set; }
         public decimal ProductPrice { get; set; }
@@ -28,8 +29,10 @@ namespace WpfAppAirLineReservation
         public string ProductDescription { get; set; }
         public string ProductPhoto { get; set; }
         public int ProductPoint { get; set; }
+        public byte[] ProductPhotoBinary { get; set; }
     
         public virtual AirLine AirLine { get; set; }
+        public virtual ProductCategory ProductCategory { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TaxFreeProductOrderDetail> TaxFreeProductOrderDetails { get; set; }
     }

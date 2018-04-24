@@ -10,5 +10,7 @@
 
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("airlinereservation.mdf")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("airlinereservation_log.ldf")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("entitymodel.context.tt")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("entitymodel.tt")]
 
 

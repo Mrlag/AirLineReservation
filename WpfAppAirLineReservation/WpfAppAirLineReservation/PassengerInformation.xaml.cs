@@ -29,6 +29,9 @@ namespace WpfAppAirLineReservation
         {
             PassengerInformationPanel Pip= new PassengerInformationPanel();
             PassengerLists.Items.Add(Pip);
+
+
+
         }
     }
 }

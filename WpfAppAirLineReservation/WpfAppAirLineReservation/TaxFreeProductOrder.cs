@@ -21,13 +21,13 @@ namespace WpfAppAirLineReservation
         }
     
         public int TaxFreeProductOrderID { get; set; }
-        public int AirLineID { get; set; }
-        public int CouponID { get; set; }
+        public Nullable<int> CouponID { get; set; }
         public int PaymentMethodID { get; set; }
-        public decimal OrderAmount { get; set; }
+        public System.DateTime OrderDate { get; set; }
+        public int PassengerID { get; set; }
     
-        public virtual AirLine AirLine { get; set; }
         public virtual Coupon Coupon { get; set; }
+        public virtual Passenger Passenger { get; set; }
         public virtual PaymentMethod PaymentMethod { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TaxFreeProductOrderDetail> TaxFreeProductOrderDetails { get; set; }

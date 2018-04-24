@@ -23,13 +23,17 @@ namespace WpfAppAirLineReservation
     
         public int CouponID { get; set; }
         public string CouponCode { get; set; }
-        public Nullable<int> Stock { get; set; }
         public Nullable<int> AirLineID { get; set; }
         public Nullable<int> UniformNo { get; set; }
+        public int Stock { get; set; }
         public Nullable<double> Discount { get; set; }
+        public string Description { get; set; }
+        public System.DateTime CouponStartDate { get; set; }
+        public System.DateTime CouponEndDate { get; set; }
     
         public virtual AirLine AirLine { get; set; }
         public virtual TravelAgency TravelAgency { get; set; }
+        public virtual TravelAgency TravelAgency1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Order> Orders { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

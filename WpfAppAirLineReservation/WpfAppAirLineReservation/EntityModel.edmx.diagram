@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="c891be60044647f3beb1af8eb4c7fc7a" Name="Diagram1">
+        <EntityTypeShape EntityType="AirLineReservationModel.AirLine" Width="1.5" PointX="0.75" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="AirLineReservationModel.City" Width="1.5" PointX="3" PointY="9.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="AirLineReservationModel.Country" Width="1.5" PointX="0.75" PointY="9.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="AirLineReservationModel.Coupon" Width="1.5" PointX="3" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AirLineReservationModel.MemberAccount" Width="1.5" PointX="3" PointY="12.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="AirLineReservationModel.MemberFeedback" Width="1.5" PointX="10.5" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="AirLineReservationModel.Newsletter" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AirLineReservationModel.Order" Width="1.5" PointX="5.25" PointY="3" IsExpanded="true" />
+        <EntityTypeShape EntityType="AirLineReservationModel.OrderDetail" Width="1.5" PointX="10.5" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="AirLineReservationModel.OrderStatu" Width="1.5" PointX="3" PointY="16.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="AirLineReservationModel.Passenger" Width="1.5" PointX="0.75" PointY="12.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="AirLineReservationModel.PaymentMethod" Width="1.5" PointX="3" PointY="18.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="AirLineReservationModel.ProductCategory" Width="1.5" PointX="9" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AirLineReservationModel.sysdiagram" Width="1.5" PointX="5.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AirLineReservationModel.TaxFreeProduct" Width="1.5" PointX="11.25" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AirLineReservationModel.TaxFreeProductOrder" Width="1.5" PointX="8.25" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="AirLineReservationModel.TaxFreeProductOrderDetail" Width="1.5" PointX="13.5" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="AirLineReservationModel.TravelAgency" Width="1.5" PointX="0.75" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="AirLineReservationModel.TravelClass" Width="1.5" PointX="3" PointY="21.375" IsExpanded="true" />
+        <AssociationConnector Association="AirLineReservationModel.FK_Coupon_AirLine" ManuallyRouted="false" />
+        <AssociationConnector Association="AirLineReservationModel.FK_Order_AirLine" ManuallyRouted="false" />
+        <AssociationConnector Association="AirLineReservationModel.FK_TaxFreeProduct_AirLine" ManuallyRouted="false" />
+        <AssociationConnector Association="AirLineReservationModel.FK_City_Country1" ManuallyRouted="false" />
+        <AssociationConnector Association="AirLineReservationModel.FK_Order_City" ManuallyRouted="false" />
+        <AssociationConnector Association="AirLineReservationModel.FK_Order_City1" ManuallyRouted="false" />
+        <AssociationConnector Association="AirLineReservationModel.FK_Passenger_Country" ManuallyRouted="false" />
+        <AssociationConnector Association="AirLineReservationModel.FK_Coupon_TravelAgency" ManuallyRouted="false" />
+        <AssociationConnector Association="AirLineReservationModel.FK_Coupon_TravelAgency1" ManuallyRouted="false" />
+        <AssociationConnector Association="AirLineReservationModel.FK_Order_Coupon" ManuallyRouted="false" />
+        <AssociationConnector Association="AirLineReservationModel.FK_TaxFreeProductOrder_Coupon" ManuallyRouted="false" />
+        <AssociationConnector Association="AirLineReservationModel.FK_MemberAccount_Passenger" ManuallyRouted="false" />
+        <AssociationConnector Association="AirLineReservationModel.FK_MemberFeedback_MemberAccount" ManuallyRouted="false" />
+        <AssociationConnector Association="AirLineReservationModel.FK_Order_MemberAccount" ManuallyRouted="false" />
+        <AssociationConnector Association="AirLineReservationModel.FK_MemberFeedback_Order" ManuallyRouted="false" />
+        <AssociationConnector Association="AirLineReservationModel.FK_Order_OrderStatus" ManuallyRouted="false" />
+        <AssociationConnector Association="AirLineReservationModel.FK_Order_PaymentMethod" ManuallyRouted="false" />
+        <AssociationConnector Association="AirLineReservationModel.FK_Order_TravelAgency" ManuallyRouted="false" />
+        <AssociationConnector Association="AirLineReservationModel.FK_Order_TravelClass" ManuallyRouted="false" />
+        <AssociationConnector Association="AirLineReservationModel.FK_OrderDetail_Order" ManuallyRouted="false" />
+        <AssociationConnector Association="AirLineReservationModel.FK_OrderDetail_Passenger" ManuallyRouted="false" />
+        <AssociationConnector Association="AirLineReservationModel.FK_TaxFreeProductOrder_Passenger" ManuallyRouted="false" />
+        <AssociationConnector Association="AirLineReservationModel.FK_TaxFreeProductOrder_PaymentMethod" ManuallyRouted="false" />
+        <AssociationConnector Association="AirLineReservationModel.FK_TaxFreeProduct_ProductCategory" ManuallyRouted="false" />
+        <AssociationConnector Association="AirLineReservationModel.FK_TaxFreeProductOrderDetail_TaxFreeProduct" ManuallyRouted="false" />
+        <AssociationConnector Association="AirLineReservationModel.FK_TaxFreeProductOrderDetail_TaxFreeProductOrder" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

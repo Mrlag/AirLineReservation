@@ -20,7 +20,6 @@ namespace WpfAppAirLineReservation
             this.Coupons = new HashSet<Coupon>();
             this.Orders = new HashSet<Order>();
             this.TaxFreeProducts = new HashSet<TaxFreeProduct>();
-            this.TaxFreeProductOrders = new HashSet<TaxFreeProductOrder>();
         }
     
         public int AirLineID { get; set; }
@@ -32,7 +31,5 @@ namespace WpfAppAirLineReservation
         public virtual ICollection<Order> Orders { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TaxFreeProduct> TaxFreeProducts { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<TaxFreeProductOrder> TaxFreeProductOrders { get; set; }
     }
 }

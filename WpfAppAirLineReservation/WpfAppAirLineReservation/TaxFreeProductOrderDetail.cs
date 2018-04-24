@@ -14,12 +14,11 @@ namespace WpfAppAirLineReservation
     
     public partial class TaxFreeProductOrderDetail
     {
+        public int TaxFreeProductOrderDetailID { get; set; }
         public int TaxFreeProductOrderID { get; set; }
         public int ProductID { get; set; }
-        public int PassengerID { get; set; }
         public int Quantity { get; set; }
     
-        public virtual Passenger Passenger { get; set; }
         public virtual TaxFreeProduct TaxFreeProduct { get; set; }
         public virtual TaxFreeProductOrder TaxFreeProductOrder { get; set; }
     }

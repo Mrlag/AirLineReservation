@@ -14,11 +14,14 @@ namespace WpfAppAirLineReservation
     
     public partial class MemberFeedback
     {
+        public int MemberFeedbackID { get; set; }
         public int MemberID { get; set; }
+        public int OrderID { get; set; }
         public int MemberRating { get; set; }
         public string Comment { get; set; }
         public Nullable<System.DateTime> CommentDate { get; set; }
     
         public virtual MemberAccount MemberAccount { get; set; }
+        public virtual Order Order { get; set; }
     }
 }

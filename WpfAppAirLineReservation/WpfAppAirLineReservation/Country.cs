@@ -18,6 +18,7 @@ namespace WpfAppAirLineReservation
         public Country()
         {
             this.Cities = new HashSet<City>();
+            this.Passengers = new HashSet<Passenger>();
         }
     
         public int CountryID { get; set; }
@@ -25,5 +26,7 @@ namespace WpfAppAirLineReservation
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<City> Cities { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Passenger> Passengers { get; set; }
     }
 }
