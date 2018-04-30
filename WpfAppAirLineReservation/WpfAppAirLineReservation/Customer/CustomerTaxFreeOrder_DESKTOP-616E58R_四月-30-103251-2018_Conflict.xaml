@@ -1,0 +1,21 @@
+﻿<Page
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:WpfAppAirLineReservation.Customer"
+      xmlns:WpfAppAirLineReservation="clr-namespace:WpfAppAirLineReservation" x:Class="WpfAppAirLineReservation.Customer.CustomerTaxFreeOrder"
+      mc:Ignorable="d" 
+      d:DesignHeight="570" d:DesignWidth="1130"
+      Title="TaxFreeOrder">
+
+    <Page.Resources>
+        <WpfAppAirLineReservation:AirLinReservationDataSet x:Key="airLinReservationDataSet"/>
+        <CollectionViewSource x:Key="taxFreeProductOrderViewSource" Source="{Binding TaxFreeProductOrder, Source={StaticResource airLinReservationDataSet}}"/>
+    </Page.Resources>
+
+    <Grid DataContext="{StaticResource taxFreeProductOrderViewSource}" >
+
+        <DataGrid ItemsSource="{Binding}" />
+    </Grid>
+</Page>

@@ -80,12 +80,13 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="AirReservationTicketOrder\MainWindow.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Compile Include="AirLine.cs">
       <DependentUpon>AirLineReservationModel1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AirLineDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AirLineDataSet.xsd</DependentUpon>
     </Compile>
     <Compile Include="AirLineReservationModel1.Context.cs">
       <AutoGen>True</AutoGen>
@@ -116,32 +117,26 @@
     <Compile Include="Coupon.cs">
       <DependentUpon>AirLineReservationModel1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Customer\CustomerAircraftOrder.xaml.cs">
+      <DependentUpon>CustomerAircraftOrder.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Customer\CustomerCoupon.xaml.cs">
+      <DependentUpon>CustomerCoupon.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Customer\CustomerInformation.xaml.cs">
+      <DependentUpon>CustomerInformation.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Customer\CustomerMainWindow.xaml.cs">
+      <DependentUpon>CustomerMainWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Customer\CustomerTaxFreeOrder.xaml.cs">
+      <DependentUpon>CustomerTaxFreeOrder.xaml</DependentUpon>
+    </Compile>
     <Compile Include="MemberAccount.cs">
       <DependentUpon>AirLineReservationModel1.tt</DependentUpon>
     </Compile>
     <Compile Include="MemberFeedback.cs">
       <DependentUpon>AirLineReservationModel1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="MemberLogin.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="MemberLogin.Designer.cs">
-      <DependentUpon>MemberLogin.cs</DependentUpon>
-    </Compile>
-    <Compile Include="MemberRegister.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="MemberRegister.Designer.cs">
-      <DependentUpon>MemberRegister.cs</DependentUpon>
-    </Compile>
-    <Compile Include="MyUserControl\ExpanderList.xaml.cs">
-      <DependentUpon>ExpanderList.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="MyUserControl\PassengerInformationPanel.xaml.cs">
-      <DependentUpon>PassengerInformationPanel.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="AirReservationTicketOrder\PassengerInformation.xaml.cs">
-      <DependentUpon>PassengerInformation.xaml</DependentUpon>
     </Compile>
     <Compile Include="Newsletter.cs">
       <DependentUpon>AirLineReservationModel1.tt</DependentUpon>
@@ -176,62 +171,16 @@
     <Compile Include="TaxFreeProductOrderDetail.cs">
       <DependentUpon>AirLineReservationModel1.tt</DependentUpon>
     </Compile>
-    <Compile Include="TicketDetail.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="TicketDetail.Designer.cs">
-      <DependentUpon>TicketDetail.cs</DependentUpon>
-    </Compile>
-    <Compile Include="MyUserControl\TicketDetailWPF.xaml.cs">
-      <DependentUpon>TicketDetailWPF.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="AirReservationTicketOrder\選擇航班 WPF.xaml.cs">
-      <DependentUpon>選擇航班 WPF.xaml</DependentUpon>
-    </Compile>
     <Compile Include="TravelAgency.cs">
       <DependentUpon>AirLineReservationModel1.tt</DependentUpon>
     </Compile>
     <Compile Include="TravelClass.cs">
       <DependentUpon>AirLineReservationModel1.tt</DependentUpon>
     </Compile>
-    <Compile Include="選擇航班.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="選擇航班.Designer.cs">
-      <DependentUpon>選擇航班.cs</DependentUpon>
-    </Compile>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="AirReservationTicketOrder\MainWindow.xaml.cs">
-      <DependentUpon>MainWindow.xaml</DependentUpon>
-      <SubType>Code</SubType>
-    </Compile>
-    <Page Include="MyUserControl\ExpanderList.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="MyUserControl\PassengerInformationPanel.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="AirReservationTicketOrder\PassengerInformation.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Themes\Generic.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="MyUserControl\TicketDetailWPF.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="AirReservationTicketOrder\選擇航班 WPF.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -247,18 +196,6 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <EmbeddedResource Include="MemberLogin.resx">
-      <DependentUpon>MemberLogin.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="MemberRegister.resx">
-      <DependentUpon>MemberRegister.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="TicketDetail.resx">
-      <DependentUpon>TicketDetail.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="選擇航班.resx">
-      <DependentUpon>選擇航班.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -267,6 +204,16 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>AirLineReservationModel1.Designer.cs</LastGenOutput>
     </EntityDeploy>
+    <None Include="AirLineDataSet.xsc">
+      <DependentUpon>AirLineDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="AirLineDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>AirLineDataSet.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="AirLineDataSet.xss">
+      <DependentUpon>AirLineDataSet.xsd</DependentUpon>
+    </None>
     <None Include="AirLineReservationModel1.edmx.diagram">
       <DependentUpon>AirLineReservationModel1.edmx</DependentUpon>
     </None>
@@ -305,12 +252,6 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="images\land.png" />
-    <Resource Include="images\departure.png" />
-    <Resource Include="images\Plane.jpg" />
-    <Resource Include="images\Plane2.jpg" />
-  </ItemGroup>
-  <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
@@ -324,6 +265,28 @@
       <DependentUpon>AirLineReservationModel1.edmx</DependentUpon>
       <LastGenOutput>AirLineReservationModel1.cs</LastGenOutput>
     </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="Customer\CustomerAircraftOrder.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Customer\CustomerCoupon.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Customer\CustomerInformation.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Customer\CustomerMainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Customer\CustomerTaxFreeOrder.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

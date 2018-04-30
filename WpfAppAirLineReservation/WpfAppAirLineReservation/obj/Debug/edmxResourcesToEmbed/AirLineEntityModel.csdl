@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="AirLineReservationModel1" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Order">
+    <Key>
+      <PropertyRef Name="OrderID" />
+    </Key>
+    <Property Name="OrderID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="AirLineID" Type="Int32" Nullable="false" />
+    <Property Name="UniformNo" Type="Int32" />
+    <Property Name="DeparturePlace" Type="Int32" Nullable="false" />
+    <Property Name="ArrivalPlace" Type="Int32" Nullable="false" />
+    <Property Name="TravalClassID" Type="Int32" Nullable="false" />
+    <Property Name="MemberID" Type="Int32" />
+    <Property Name="DepartureDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="DepartureTime" Type="Time" Nullable="false" Precision="7" />
+    <Property Name="ArrivalDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="ArrivalTime" Type="Time" Nullable="false" Precision="7" />
+    <Property Name="CouponID" Type="Int32" />
+    <Property Name="FlightRoute" Type="Int32" />
+    <Property Name="OrderStatusID" Type="Int32" Nullable="false" />
+    <Property Name="OrderDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="PaymentMethodID" Type="Int32" Nullable="false" />
+    <Property Name="AdultCount" Type="Int32" Nullable="false" />
+    <Property Name="AdultPrice" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="ChildCount" Type="Int32" Nullable="false" />
+    <Property Name="ChildPrice" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="ServiceFee" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <NavigationProperty Name="City" Relationship="AirLineReservationModel1.FK_Order_City" FromRole="Order" ToRole="City" />
+    <NavigationProperty Name="City1" Relationship="AirLineReservationModel1.FK_Order_City1" FromRole="Order" ToRole="City" />
+  </EntityType>
+  <EntityContainer Name="AirLineEntityModel" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Orders" EntityType="Self.Order" />
+    <EntitySet Name="Cities" EntityType="AirLineReservationModel1.City" />
+    <AssociationSet Name="FK_Order_City" Association="AirLineReservationModel1.FK_Order_City">
+      <End Role="City" EntitySet="Cities" />
+      <End Role="Order" EntitySet="Orders" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Order_City1" Association="AirLineReservationModel1.FK_Order_City1">
+      <End Role="City" EntitySet="Cities" />
+      <End Role="Order" EntitySet="Orders" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="City">
+    <Key>
+      <PropertyRef Name="CityID" />
+    </Key>
+    <Property Name="CityID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CityName" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="CountryID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Orders" Relationship="AirLineReservationModel1.FK_Order_City" FromRole="City" ToRole="Order" />
+    <NavigationProperty Name="Orders1" Relationship="AirLineReservationModel1.FK_Order_City1" FromRole="City" ToRole="Order" />
+  </EntityType>
+  <Association Name="FK_Order_City">
+    <End Type="AirLineReservationModel1.City" Role="City" Multiplicity="1" />
+    <End Type="AirLineReservationModel1.Order" Role="Order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="City">
+        <PropertyRef Name="CityID" />
+      </Principal>
+      <Dependent Role="Order">
+        <PropertyRef Name="DeparturePlace" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Order_City1">
+    <End Type="AirLineReservationModel1.City" Role="City" Multiplicity="1" />
+    <End Type="AirLineReservationModel1.Order" Role="Order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="City">
+        <PropertyRef Name="CityID" />
+      </Principal>
+      <Dependent Role="Order">
+        <PropertyRef Name="ArrivalPlace" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

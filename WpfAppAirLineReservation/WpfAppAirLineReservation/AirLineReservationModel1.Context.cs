@@ -10,13 +10,13 @@
 namespace WpfAppAirLineReservation
 {
     using System;
-    using System.Data.Entity;
+    using System.Data.Entity;   
     using System.Data.Entity.Infrastructure;
     
     public partial class AirLineReservationEntities2 : DbContext
     {
-        public AirLineReservationEntities2()
-            : base("name=AirLineReservationEntities2")
+        public AirLineReservationEntities2(string connectionString)
+            : base(connectionString)
         {
         }
     

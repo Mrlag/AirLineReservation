@@ -5,6 +5,7 @@ using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
+using WpfAppAirLineReservation.Customer;
 
 namespace WpfAppAirLineReservation
 {
@@ -18,7 +19,7 @@ namespace WpfAppAirLineReservation
             this.ShutdownMode = ShutdownMode.OnLastWindowClose;
 
 
-            MainWindow W = new MainWindow();
+            Window W = new CustomerMainWindow();
             W.Show();
 
             //Window w = new PassengerInformation();

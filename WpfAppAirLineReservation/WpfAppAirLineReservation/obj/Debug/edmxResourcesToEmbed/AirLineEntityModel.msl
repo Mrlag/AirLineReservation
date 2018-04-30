@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="AirLineReservationModel1StoreContainer" CdmEntityContainer="AirLineEntityModel">
+    <EntitySetMapping Name="Orders">
+      <EntityTypeMapping TypeName="AirLineReservationModel1.Order">
+        <MappingFragment StoreEntitySet="Order">
+          <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+          <ScalarProperty Name="AirLineID" ColumnName="AirLineID" />
+          <ScalarProperty Name="UniformNo" ColumnName="UniformNo" />
+          <ScalarProperty Name="DeparturePlace" ColumnName="DeparturePlace" />
+          <ScalarProperty Name="ArrivalPlace" ColumnName="ArrivalPlace" />
+          <ScalarProperty Name="TravalClassID" ColumnName="TravalClassID" />
+          <ScalarProperty Name="MemberID" ColumnName="MemberID" />
+          <ScalarProperty Name="DepartureDate" ColumnName="DepartureDate" />
+          <ScalarProperty Name="DepartureTime" ColumnName="DepartureTime" />
+          <ScalarProperty Name="ArrivalDate" ColumnName="ArrivalDate" />
+          <ScalarProperty Name="ArrivalTime" ColumnName="ArrivalTime" />
+          <ScalarProperty Name="CouponID" ColumnName="CouponID" />
+          <ScalarProperty Name="FlightRoute" ColumnName="FlightRoute" />
+          <ScalarProperty Name="OrderStatusID" ColumnName="OrderStatusID" />
+          <ScalarProperty Name="OrderDate" ColumnName="OrderDate" />
+          <ScalarProperty Name="PaymentMethodID" ColumnName="PaymentMethodID" />
+          <ScalarProperty Name="AdultCount" ColumnName="AdultCount" />
+          <ScalarProperty Name="AdultPrice" ColumnName="AdultPrice" />
+          <ScalarProperty Name="ChildCount" ColumnName="ChildCount" />
+          <ScalarProperty Name="ChildPrice" ColumnName="ChildPrice" />
+          <ScalarProperty Name="ServiceFee" ColumnName="ServiceFee" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Cities">
+      <EntityTypeMapping TypeName="AirLineReservationModel1.City">
+        <MappingFragment StoreEntitySet="City">
+          <ScalarProperty Name="CountryID" ColumnName="CountryID" />
+          <ScalarProperty Name="CityName" ColumnName="CityName" />
+          <ScalarProperty Name="CityID" ColumnName="CityID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

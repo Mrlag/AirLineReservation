@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-D:\講義及作業\專題資料\WPF 專題\WpfAppAirLineReservation\WpfAppAirLineReservation\obj\Debug\
+D:\CloudStation\AirLineReservation\WpfAppAirLineReservation\WpfAppAirLineReservation\obj\Debug\
 WpfAppAirLineReservation
 none
 false
 DEBUG;TRACE
-D:\講義及作業\專題資料\WPF 專題\WpfAppAirLineReservation\WpfAppAirLineReservation\App.xaml
-71059819859
+D:\CloudStation\AirLineReservation\WpfAppAirLineReservation\WpfAppAirLineReservation\App.xaml
+5-2145371839
 24544267
-45-2046786561
-20-124066856
-AirReservationTicketOrder\MainWindow.xaml;MyUserControl\ExpanderList.xaml;MyUserControl\PassengerInformationPanel.xaml;AirReservationTicketOrder\PassengerInformation.xaml;Themes\Generic.xaml;MyUserControl\TicketDetailWPF.xaml;AirReservationTicketOrder\選擇航班 WPF.xaml;
+37126525599
+201416096014
+Customer\CustomerAircraftOrder.xaml;Customer\CustomerCoupon.xaml;Customer\CustomerInformation.xaml;Customer\CustomerMainWindow.xaml;Customer\CustomerTaxFreeOrder.xaml;
 
 False
 
