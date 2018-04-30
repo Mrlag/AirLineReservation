@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity.Core.EntityClient;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,9 +25,7 @@ namespace WpfAppAirLineReservation.Customer
         {
             InitializeComponent();
         }
-
-        //自訂Entity_ConnectionString   
-        
+        static public int loginmemberID { set; get; }
 
         private void change_page(object sender, RoutedEventArgs e)
         {
@@ -34,6 +34,31 @@ namespace WpfAppAirLineReservation.Customer
 
         }
 
-        
+        public static string GetSQLConnectionString
+        {
+            get
+            {
+                SqlConnectionStringBuilder providerCs = new SqlConnectionStringBuilder();
+                providerCs.DataSource = "darren.nctu.me,727";
+                providerCs.InitialCatalog = "AirLineReservation";
+                providerCs.IntegratedSecurity = false;
+                //providerCs.UserInstance = true;
+                providerCs.UserID = "sa";
+                providerCs.Password = "12345678";
+
+                var csBuilder = new EntityConnectionStringBuilder();
+
+                csBuilder.Provider = "System.Data.SqlClient";
+                csBuilder.ProviderConnectionString = providerCs.ToString();
+                //Metadata使用原先EntityConnectionStringBuilder的Metadata
+                csBuilder.Metadata = @"res://*/AirLineReservationModel1.csdl|res://*/AirLineReservationModel1.ssdl|res://*/AirLineReservationModel1.msl";
+
+                return csBuilder.ToString();
+
+            }
+        }
+
+
     }
+
 }

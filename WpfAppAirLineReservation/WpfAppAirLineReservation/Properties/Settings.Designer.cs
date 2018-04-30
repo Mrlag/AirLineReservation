@@ -26,8 +26,8 @@ namespace WpfAppAirLineReservation.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=220.135.38.91,727;Initial Catalog=AirLineReservation;Persist Security" +
-            " Info=True;User ID=sa;Password=12345678")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=darren.nctu.me,727;Initial Catalog=AirLineReservation;Persist Securit" +
+            "y Info=True;User ID=sa;Password=12345678")]
         public string AirLineReservation {
             get {
                 return ((string)(this["AirLineReservation"]));

@@ -8,7 +8,7 @@
      d:DesignHeight="570" d:DesignWidth="1130"
       Title="CustomerInformation">
 
-    <Grid Background="Blue">
+    <Grid >
         
     </Grid>
 </Page>

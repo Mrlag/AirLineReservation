@@ -29,28 +29,6 @@ namespace WpfAppAirLineReservation.Customer
             InitializeComponent();
         }
 
-        public string GetSQLConnectionString()
-        {
-            SqlConnectionStringBuilder providerCs = new SqlConnectionStringBuilder();
-
-            providerCs.DataSource = "220.135.38.91,727";
-            providerCs.InitialCatalog = "AirLineReservation";
-            providerCs.IntegratedSecurity = false;
-            //providerCs.UserInstance = true;
-            providerCs.UserID = "sa";
-            providerCs.Password = "12345678";
-
-            var csBuilder = new EntityConnectionStringBuilder();
-
-            csBuilder.Provider = "System.Data.SqlClient";
-            csBuilder.ProviderConnectionString = providerCs.ToString();
-            //Metadata使用原先EntityConnectionStringBuilder的Metadata
-            csBuilder.Metadata = @"res://*/AirLineReservationModel1.csdl|res://*/AirLineReservationModel1.ssdl|res://*/AirLineReservationModel1.msl";
-
-            return csBuilder.ToString();
-        }
-
-        
         public class mycustomerorder
         {
             public int OrderID { set; get; }
@@ -77,7 +55,7 @@ namespace WpfAppAirLineReservation.Customer
         {
 
             //這邊有新增AirLineReservationEntities2建構子的參數
-            AirLineReservationEntities2 db = new AirLineReservationEntities2(GetSQLConnectionString());
+            AirLineReservationEntities2 db = new AirLineReservationEntities2(CustomerMainWindow.GetSQLConnectionString);
 
             System.Windows.Data.CollectionViewSource customerorderViewSource;
 
@@ -87,8 +65,8 @@ namespace WpfAppAirLineReservation.Customer
             //將CollectionViewSource跟Page.Resources的CollectionViewSource做連繫
             customerorderViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("customerorder")));
 
-            var query = from order in db.Orders
-                        where order.UniformNo != null
+            var query = from order in db.Orders                        
+                        where order.MemberID==CustomerMainWindow.loginmemberID
                         select new mycustomerorder
                         {
                             OrderID = order.OrderID,
